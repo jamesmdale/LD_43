@@ -41,7 +41,8 @@ public class PlayerController : NetworkBehaviour {
     [Command]
     void CmdFire ()
     {
-        var bullet = (GameObject)Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
+        Vector3 offset = new Vector3(1.0f, 1.0f, 0.0f);
+        var bullet = (GameObject)Instantiate(bulletPrefab, this.transform.position + offset, this.transform.rotation);
 
         bullet.GetComponent<Rigidbody2D>().velocity.Set(Input.GetAxis("Horizontal") * 6, Input.GetAxis("Vertical") * 6);
 
@@ -52,6 +53,6 @@ public class PlayerController : NetworkBehaviour {
 
         NetworkServer.Spawn(bullet);
 
-        Destroy(bullet, 3.0f);
+        Destroy(bullet, 100.0f);
     }
 }
