@@ -32,7 +32,14 @@ public class SceneController : NetworkBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
+
+        bool isDown = Input.GetKeyDown(KeyCode.Z);
+
+        if( isDown )
+        {
+            Debug.Log("Z");
+            GameObject.Find("NetworkController").GetComponent<NetworkManager>().ServerChangeScene("FrostRunner2");
+        }
 	}
 
     public void ChangeSceneName(string newSceneName)
