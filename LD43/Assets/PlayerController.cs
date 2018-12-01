@@ -41,10 +41,13 @@ public class PlayerController : NetworkBehaviour {
     [Command]
     void CmdFire ()
     {
-        Vector3 offset = new Vector3(1.0f, 1.0f, 0.0f);
+        Vector3 offset = new Vector3(.0f, 1.0f, 0.0f);
         var bullet = (GameObject)Instantiate(bulletPrefab, this.transform.position + offset, this.transform.rotation);
 
-        bullet.GetComponent<Rigidbody2D>().velocity.Set(Input.GetAxis("Horizontal") * 6, Input.GetAxis("Vertical") * 6);
+        Vector2 currentVelocity = GetComponent<Rigidbody2D>().velocity;
+        currentVelocity.Normalize();
+
+        bullet.GetComponent<Rigidbody2D>().velocity = currentVelocity * 6.0f;
 
         if (!isServer)
         {
