@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114713397299845412}
   - component: {fileID: 114513142486350990}
   - component: {fileID: 114599089280077122}
+  - component: {fileID: 114801284614316558}
   m_Layer: 0
   m_Name: NetworkController
   m_TagString: Untagged
@@ -107,8 +108,10 @@ MonoBehaviour:
   m_OfflineScene: ConnectToNetScene
   m_OnlineScene: HubScene
   m_SpawnPrefabs:
-  - {fileID: 1729342805941002, guid: 4dd0017a6f5c1ca46ac4ee101bf936b1, type: 2}
+  - {fileID: 1334072200926248, guid: 7cc43ed86d5439643bbd735e753a5f72, type: 2}
   - {fileID: 1508474944652894, guid: 996b5b214ff27634689e4898864799de, type: 2}
+  - {fileID: 1654497124911774, guid: 83fda9d562a99374bb5f0718853f62fb, type: 2}
+  - {fileID: 1466365982155728, guid: d74ac085a40adc949a6eba3515602048, type: 2}
   m_CustomConfig: 1
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -164,3 +167,15 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
+--- !u!114 &114801284614316558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159918300725308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41355a221055c3044bc9efd4b320a6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: 

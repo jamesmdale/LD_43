@@ -38,7 +38,7 @@ public class ActivatorScript : MonoBehaviour {
         
         if( playersInNewScene != player.Length )
         {
-            Debug.Log("FOUND PLAYERS! " + player.Length);
+            // Debug.Log("FOUND PLAYERS! " + player.Length);
             playersInNewScene = player.Length;
             string sceneName = SceneManager.GetActiveScene().name;
 
@@ -61,7 +61,7 @@ public class ActivatorScript : MonoBehaviour {
 
     public void ChangeMyInputScripts( GameObject playerGO, string sceneName )
     {
-        Debug.Log("CALLED! ChangeMyInputScripts by " + playerGO.name + " for " + sceneName );
+        // Debug.Log("CALLED! ChangeMyInputScripts by " + playerGO.name + " for " + sceneName );
 
         // If we have that scene name in dictionary..
         bool hasScene = sceneAndInputScripts.ContainsKey(sceneName);

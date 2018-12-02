@@ -61,21 +61,21 @@ public class SceneController : MonoBehaviour {
 
     void GoToLevelCheck()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Keypad4))
         {
             currentSceneName = "FrostRunner2";
             NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("FrostRunner2");
             NetworkManager.singleton.ServerChangeScene("FrostRunner2");
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.Keypad1))
         {
             currentSceneName = "BomberMan";
             NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("BomberMan");
             NetworkManager.singleton.ServerChangeScene("BomberMan");
         }
 
-        if (Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKeyDown(KeyCode.Keypad2))
         {
             currentSceneName = "JumpRope";
             NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("JumpRope");
@@ -83,7 +83,7 @@ public class SceneController : MonoBehaviour {
             NetworkManager.singleton.ServerChangeScene("JumpRope");
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Keypad3))
         {
             currentSceneName = "PotatoScene";
             NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("PotatoScene");
@@ -91,7 +91,7 @@ public class SceneController : MonoBehaviour {
             NetworkManager.singleton.ServerChangeScene("PotatoScene");
         }
 
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.Keypad0))
         {
             currentSceneName = "HubScene";
             NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("HubScene");
