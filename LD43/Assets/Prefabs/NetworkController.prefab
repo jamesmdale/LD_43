@@ -9,18 +9,20 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1896014367523762}
+  m_RootGameObject: {fileID: 1159918300725308}
   m_IsPrefabAsset: 1
---- !u!1 &1896014367523762
+--- !u!1 &1159918300725308
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4371037811797464}
-  - component: {fileID: 114087881001753834}
-  - component: {fileID: 114705027454220164}
+  - component: {fileID: 4941273247033762}
+  - component: {fileID: 114713397299845412}
+  - component: {fileID: 114513142486350990}
+  - component: {fileID: 114599089280077122}
+  - component: {fileID: 114245937931931838}
   m_Layer: 0
   m_Name: NetworkController
   m_TagString: Untagged
@@ -28,12 +30,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4371037811797464
+--- !u!4 &4941273247033762
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1896014367523762}
+  m_GameObject: {fileID: 1159918300725308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.1112875, y: 0.20931935, z: -0.019243937}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,12 +43,74 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114087881001753834
+--- !u!114 &114245937931931838
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1896014367523762}
+  m_GameObject: {fileID: 1159918300725308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 149
+    i1: 55
+    i2: 122
+    i3: 136
+    i4: 233
+    i5: 241
+    i6: 105
+    i7: 116
+    i8: 251
+    i9: 29
+    i10: 102
+    i11: 149
+    i12: 152
+    i13: 21
+    i14: 25
+    i15: 136
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114513142486350990
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159918300725308}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 227461547, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  showGUI: 1
+  offsetX: 220
+  offsetY: 220
+--- !u!114 &114599089280077122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159918300725308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c6d1f8adc35e3478991082d27dc349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenes:
+  - sceneName: HubScene
+    inputManagerScript: InputManager_Hub
+  currentSceneName: HubScene
+--- !u!114 &114713397299845412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159918300725308}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1dec1926b47919d43b898928f4fd9ae4, type: 3}
@@ -65,8 +129,8 @@ MonoBehaviour:
     type: 2}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
-  m_OfflineScene: 
-  m_OnlineScene: 
+  m_OfflineScene: ConnectToNetScene
+  m_OnlineScene: HubScene
   m_SpawnPrefabs:
   - {fileID: 1729342805941002, guid: 4dd0017a6f5c1ca46ac4ee101bf936b1, type: 2}
   m_CustomConfig: 1
@@ -124,18 +188,3 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
---- !u!114 &114705027454220164
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1896014367523762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 227461547, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 0}
-  showGUI: 1
-  offsetX: 0
-  offsetY: 0
