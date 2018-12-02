@@ -53,6 +53,8 @@ public class PlayerController : NetworkBehaviour {
 
         ProcessSpace(spaceDown);
         ProcessShift(shiftDown);
+
+        GoToLevelCheck();
     }
 
     public void ChangeCurrentScene(string newScene)
@@ -102,5 +104,41 @@ public class PlayerController : NetworkBehaviour {
             ipScript.ProcessShift(isDown);
         else
             Debug.LogErrorFormat("Can't find InputManager for " + currentSceneName + ".");
+    }
+
+    void GoToLevelCheck()
+    {
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("FrostRunner2");
+            NetworkManager.singleton.ServerChangeScene("FrostRunner2");
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("BomberMan");
+            NetworkManager.singleton.ServerChangeScene("BomberMan");
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("JumpRope");
+
+            NetworkManager.singleton.ServerChangeScene("JumpRope");
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("PotatoScene");
+
+            NetworkManager.singleton.ServerChangeScene("PotatoScene");
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("HubScene");
+
+            NetworkManager.singleton.ServerChangeScene("HubScene");
+        }
     }
 }
