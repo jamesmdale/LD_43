@@ -15,8 +15,11 @@ public class InputManager_HotPotato : InputManager {
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+        if (GetComponentInParent<PlayerController>().currentSceneName != "PotatoScene")
+        {
+            return;
+        }
+    }
 
     public override void ProcessHorizontalAxis(float axis)
     {
