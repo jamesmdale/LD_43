@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FrostRunner2.unity
     guid: f28920eea9da7be42a0098d019736e20
+  - enabled: 1
+    path: Assets/Scenes/PotatoScene.unity
+    guid: 120b43954d2f87346b182f3588ef2ad5
   m_configObjects: {}
