@@ -5,17 +5,16 @@ using UnityEngine;
 public class InputManager_Hub : InputManager {
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
-        if (GetComponentInParent<PlayerController>().currentSceneName != "HubScene")
-        {
+	void Update ()
+    {
+        if (!isLocalPlayer)
             return;
-        }
 
     }
     

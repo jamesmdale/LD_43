@@ -5,16 +5,16 @@ using UnityEngine;
 public class InputManager_JumpRope : InputManager {
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        if (GetComponentInParent<PlayerController>().currentSceneName != "JumpRope")
-        {
+	void Update ()
+    {
+        if (!isLocalPlayer)
             return;
-        }
     }
 
     public override void ProcessSpace(bool isDown)

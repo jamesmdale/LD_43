@@ -38,7 +38,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-ProjectSettings/QualitySettings.asset
+*/ProjectSettings/QualitySettings.asset
 
 # Crashlytics generated file
 Assets/StreamingAssets/crashlytics-build.properties

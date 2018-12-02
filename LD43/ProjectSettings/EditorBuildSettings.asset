@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PotatoScene.unity
     guid: 120b43954d2f87346b182f3588ef2ad5
+  - enabled: 1
+    path: Assets/Scenes/BomberMan.unity
+    guid: 7f4f30613c6ad74418fc18fdaec9d2c0
+  - enabled: 1
+    path: Assets/Scenes/JumpRope.unity
+    guid: d8f865b9fd42bac4390c22ed2f021808
   m_configObjects: {}
