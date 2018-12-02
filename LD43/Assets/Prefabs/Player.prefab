@@ -132,8 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 742e1bdf29ed8f4449902d8a224a0c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSceneName: HubScene
   displayName: CoolZac
+  playerServerData: {fileID: 1334072200926248, guid: 7cc43ed86d5439643bbd735e753a5f72,
+    type: 2}
+  myPlayerServerDataReference: {fileID: 0}
 --- !u!114 &114723982819991226
 MonoBehaviour:
   m_ObjectHideFlags: 1
