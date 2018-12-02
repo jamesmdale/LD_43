@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InputManager_HotPotato : InputManager {
-    GameObject player;
     float m_minPotatoDistance = 3.0f;
     float m_playerSpeed = 5.0f;
 
