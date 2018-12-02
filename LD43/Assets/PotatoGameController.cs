@@ -29,22 +29,27 @@ public class PotatoGameController : NetworkBehaviour {
 
 	}
 
-    [Command]
+   // [Command]
     void CmdSpawnPotato()
     {
-        GameObject potato = GameObject.Instantiate(m_potatoPrefab);
+        if (NetworkServer.active)
+        {
+            GameObject potato = GameObject.Instantiate(m_potatoPrefab);
 
 
 
 
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        int randIndex = Random.Range(0, players.Length);
-        GameObject markedplayer = players[randIndex];
-        potato.GetComponent<Potato>().CmdSetPlayer(markedplayer);
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            int randIndex = Random.Range(0, players.Length);
+            GameObject markedplayer = players[randIndex];
+            Debug.Log("sending potato to player " + markedplayer);
+            potato.GetComponent<Potato>().CmdSetPlayer(markedplayer.GetComponent<PlayerController>().m_playerID);
 
-        // Spawn the potato on the Clients
-        NetworkServer.Spawn(potato);
-        // Destroy the bullet after 2 seconds
-        //Destroy(potato, 2.0f);
+
+            // Spawn the potato on the Clients
+            NetworkServer.Spawn(potato);
+            // Destroy the bullet after 2 seconds
+            //Destroy(potato, 2.0f);
+        }
     }
 }
