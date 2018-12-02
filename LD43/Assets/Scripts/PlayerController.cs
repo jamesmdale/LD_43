@@ -26,6 +26,9 @@ public class PlayerController : NetworkBehaviour {
             else
                 Debug.LogErrorFormat("Can't find player named " + displayName + ". " + scriptName + "!");
         }
+
+ 
+        displayName = NetworkManager.singleton.GetComponent<StorePlayerName>().playerName;
     }
 
     public override void OnStartLocalPlayer()

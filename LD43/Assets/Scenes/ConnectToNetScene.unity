@@ -538,6 +538,23 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 809328179}
   m_CullTransparentMesh: 0
+--- !u!1 &898472636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1159918300725308, guid: 95377a88e9f16974fb1d669598151988,
+    type: 2}
+  m_PrefabInternal: {fileID: 1122802928}
+--- !u!114 &898472637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 898472636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41355a221055c3044bc9efd4b320a6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: 
 --- !u!1001 &1122802928
 Prefab:
   m_ObjectHideFlags: 0
@@ -924,6 +941,7 @@ MonoBehaviour:
   theNetworkManager: {fileID: 0}
   nameInputField: {fileID: 698245813}
   nameInputUI: {fileID: 1839094348}
+  storePlayerScript: {fileID: 898472637}
   playerName: Chris
 --- !u!4 &2011078048
 Transform:

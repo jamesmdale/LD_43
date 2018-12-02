@@ -9,6 +9,7 @@ public class ConnectMenuManager : MonoBehaviour {
     public GameObject   theNetworkManager;
     public Text         nameInputField;
     public Canvas       nameInputUI;
+    public StorePlayerName     storePlayerScript;
 
     public string playerName;
     
@@ -32,6 +33,7 @@ public class ConnectMenuManager : MonoBehaviour {
             playerName = "Chris";
         }
 
+        storePlayerScript.playerName = playerName;
         nameInputUI.enabled = false;
     }
 }
