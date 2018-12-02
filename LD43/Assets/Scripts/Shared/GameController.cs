@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class GameController : MonoBehaviour {
+using UnityEngine.Networking;
+public class GameController : NetworkBehaviour
+{
 
     public static GameController g_gameController = null;
     public PlayerWidgetController[] m_widgets;
@@ -37,8 +38,9 @@ public class GameController : MonoBehaviour {
 		
 	}
 
-    void AddPlayer(short playerID)
+    public void AddPlayer(int playerID)
     {
+        Debug.Log("Setting player in canvas...");
         if (playerID < m_widgets.Length && playerID >= 0)
         {
             m_widgets[playerID].SetPlayerID(playerID);
