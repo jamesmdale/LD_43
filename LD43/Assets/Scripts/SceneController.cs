@@ -40,20 +40,13 @@ public class SceneController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {       
-
-     
+        
     }
 
     // Update is called once per frame
-    void Update () {
-
-        bool isDown = Input.GetKeyDown(KeyCode.Z);
-
-        if( isDown )
-        {
-            Debug.Log("Z");
-            GameObject.Find("NetworkController").GetComponent<NetworkManager>().ServerChangeScene("FrostRunner2");
-        }
+    void Update ()
+    {
+        GoToLevelCheck();
 	}
 
     public void ChangeSceneName(string newSceneName)
@@ -66,5 +59,43 @@ public class SceneController : MonoBehaviour {
         return currentSceneName;
     }
 
+    void GoToLevelCheck()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            currentSceneName = "FrostRunner2";
+            NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("FrostRunner2");
+            NetworkManager.singleton.ServerChangeScene("FrostRunner2");
+        }
 
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            currentSceneName = "BomberMan";
+            NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("BomberMan");
+            NetworkManager.singleton.ServerChangeScene("BomberMan");
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            currentSceneName = "JumpRope";
+            NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("JumpRope");
+
+            NetworkManager.singleton.ServerChangeScene("JumpRope");
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            currentSceneName = "PotatoScene";
+            NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("PotatoScene");
+
+            NetworkManager.singleton.ServerChangeScene("PotatoScene");
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            currentSceneName = "HubScene";
+            NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("HubScene");
+            NetworkManager.singleton.ServerChangeScene("HubScene");
+        }
+    }
 }
