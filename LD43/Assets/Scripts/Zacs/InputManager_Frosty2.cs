@@ -16,7 +16,8 @@ public class InputManager_Frosty2 : InputManager {
 	// Update is called once per frame
 	void Update ()
     {
-		
+        Vector3 pos = this.gameObject.transform.position;
+        Camera.main.transform.position = new Vector3(pos.x, 0.0f, -10.0f);
 	}
 
     public override void ProcessSpace(bool isDown)

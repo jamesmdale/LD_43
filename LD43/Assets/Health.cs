@@ -11,8 +11,8 @@ public class Health : MonoBehaviour {
 
     void Start()
     {
-        GameObject textCanvas = GameObject.Find("HealthText");
-        uiText = textCanvas.GetComponent<Text>(); 
+        //GameObject textCanvas = GameObject.Find("HealthText");
+        //uiText = textCanvas.GetComponent<Text>(); 
         
     }
 

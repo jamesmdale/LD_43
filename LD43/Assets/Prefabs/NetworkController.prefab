@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 114713397299845412}
   - component: {fileID: 114513142486350990}
   - component: {fileID: 114599089280077122}
-  - component: {fileID: 114245937931931838}
   m_Layer: 0
   m_Name: NetworkController
   m_TagString: Untagged
@@ -43,38 +42,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114245937931931838
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1159918300725308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 149
-    i1: 55
-    i2: 122
-    i3: 136
-    i4: 233
-    i5: 241
-    i6: 105
-    i7: 116
-    i8: 251
-    i9: 29
-    i10: 102
-    i11: 149
-    i12: 152
-    i13: 21
-    i14: 25
-    i15: 136
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &114513142486350990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,6 +71,14 @@ MonoBehaviour:
   scenes:
   - sceneName: HubScene
     inputManagerScript: InputManager_Hub
+  - sceneName: FrostRunner2
+    inputManagerScript: InputManager_Frosty2
+  - sceneName: BomberMan
+    inputManagerScript: InputManager_Bomberman
+  - sceneName: JumpRope
+    inputManagerScript: InputManager_JumpRope
+  - sceneName: PotatoScene
+    inputManagerScript: InputManager_HotPotato
   currentSceneName: HubScene
 --- !u!114 &114713397299845412
 MonoBehaviour:
