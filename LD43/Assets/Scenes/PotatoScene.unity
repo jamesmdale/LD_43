@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 393506483}
   - component: {fileID: 393506482}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,6 +367,12 @@ Prefab:
       propertyPath: m_tutorialText
       value: 
       objectReference: {fileID: 538779285}
+    - target: {fileID: 114706450349115304, guid: 2d779a992f56d6d43acb294ebacb56e4,
+        type: 2}
+      propertyPath: m_potatoPrefab
+      value: 
+      objectReference: {fileID: 1508474944652894, guid: 996b5b214ff27634689e4898864799de,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d779a992f56d6d43acb294ebacb56e4, type: 2}
   m_IsPrefabAsset: 0
