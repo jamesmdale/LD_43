@@ -7,22 +7,14 @@ using UnityEngine.Networking;
 public class PlayerController : NetworkBehaviour {
 
     public string currentSceneName = "HubScene";
-    public SceneController sceneController;
+   // public SceneController sceneController;
     private Dictionary<string, InputManager> sceneInputScripts = new Dictionary<string, InputManager>();
     public string displayName = "CoolZac";
 
     // Use this for initialization
     void Start ()
     {
-        sceneController = GameObject.Find("SceneManager").GetComponent<SceneController>();
-
-        if(sceneController == null)
-        {
-            Debug.LogError("SceneManager not found!!");
-            return;
-        }
-
-        foreach (LevelNameAndInputManager thisSceneInfo in sceneController.scenes)
+        foreach (LevelNameAndInputManager thisSceneInfo in NetworkManager.singleton.GetComponent<SceneController>().scenes)
         {
             string levelName = thisSceneInfo.sceneName;
             string scriptName = thisSceneInfo.inputManagerScript;
@@ -44,7 +36,12 @@ public class PlayerController : NetworkBehaviour {
     // Update is called once per frame
     void Update()
     {
-        currentSceneName = sceneController.GetCurrentSceneName();
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
+        currentSceneName = NetworkManager.singleton.GetComponent<SceneController>().GetCurrentSceneName();
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");

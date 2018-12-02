@@ -1,19 +1,33 @@
-﻿using UnityEngine;
-
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Networking;
-
 using UnityEngine.Networking.Match;
+
+//[System.Serializable]
+//public struct LevelNameAndInputManager
+//{
+//    public string sceneName;
+//    public string inputManagerScript;
+
+//    public LevelNameAndInputManager(string inSceneName, string inInputManagerScript)
+//    {
+//        sceneName = inSceneName;
+//        inputManagerScript = inInputManagerScript;
+//    }
+//}
 
 public class SacrificialNetworkManager : NetworkManager
 {
+    //public List<LevelNameAndInputManager> scenes = new List<LevelNameAndInputManager>();
+    //public string currentSceneName = "HubScene";
+    //public static SceneController sceneControllerInstance;
 
     // Server callbacks
-
     public override void OnServerConnect(NetworkConnection conn)
     {
         base.OnServerConnect(conn);
         Debug.Log("A client connected to the server: " + conn);
-
     }
 
     public override void OnServerDisconnect(NetworkConnection conn)
@@ -151,5 +165,15 @@ public class SacrificialNetworkManager : NetworkManager
         Debug.Log("Server triggered scene change and we've done the same, do any extra work here for the client...");
 
     }
+
+    //public void ChangeSceneName(string newSceneName)
+    //{
+    //    currentSceneName = newSceneName;
+    //}
+
+    //public string GetCurrentSceneName()
+    //{
+    //    return currentSceneName;
+    //}
 
 }

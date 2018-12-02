@@ -16,12 +16,26 @@ public struct LevelNameAndInputManager
     }
 }
 
-public class SceneController : NetworkBehaviour {
+public class SceneController : MonoBehaviour {
 
     [SerializeField]
     public List<LevelNameAndInputManager> scenes = new List<LevelNameAndInputManager>();
 
     public string currentSceneName = "HubScene";
+    public static SceneController sceneControllerInstance;
+
+    void Awake()
+    {
+        if (sceneControllerInstance == null)
+        {
+            sceneControllerInstance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Use this for initialization
     void Start()

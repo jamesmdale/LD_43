@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager_Bomberman : MonoBehaviour {
+public class InputManager_Bomberman : InputManager {
 
 	// Use this for initialization
 	void Start () {
@@ -13,4 +13,24 @@ public class InputManager_Bomberman : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public override void ProcessSpace(bool isDown)
+    {
+
+    }
+
+    public override void ProcessShift(bool isDown)
+    {
+
+    }
+
+    public override void ProcessHorizontalAxis(float axis)
+    {
+
+    }
+
+    public override void ProcessVerticalAxis(float axis)
+    {
+
+    }
 }

@@ -5,15 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/HubScene.unity
-    guid: 1cca59991649033468dfdbb32e023042
   - enabled: 1
     path: Assets/Scenes/ConnectToNetScene.unity
     guid: 122b15f96159d484286f15667e2d6304
+  - enabled: 1
+    path: Assets/Scenes/HubScene.unity
+    guid: 1cca59991649033468dfdbb32e023042
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/FrostRunner2.unity
     guid: f28920eea9da7be42a0098d019736e20
