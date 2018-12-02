@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public static GameController g_gameController = null;
-    public Canvas m_canvas;
+    public PlayerWidgetController[] m_widgets;
     public PlayerController[] m_players;
 
     //singleton AF
@@ -37,8 +37,14 @@ public class GameController : MonoBehaviour {
 		
 	}
 
-    void AddPlayer(PlayerController controller)
+    void AddPlayer(short playerID)
     {
-
+        if (playerID < m_widgets.Length && playerID >= 0)
+        {
+            m_widgets[playerID].SetPlayerID(playerID);
+        } else
+        {
+            Debug.Log("No widget for player: " + playerID);
+        }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InputManager_HotPotato : InputManager {
     GameObject player;
+    float m_minPotatoDistance = 3.0f;
 
     // Use this for initialization
     void Start ()  
@@ -30,10 +31,35 @@ public class InputManager_HotPotato : InputManager {
     public override void ProcessSpace(bool isDown)
     {
         if (isDown)
-            Debug.Log("DOWN!");
+        {
+            GameObject[] m_players = GameObject.FindGameObjectsWithTag("Player");
+            float minDistance = 9999.0f;
+            GameObject minPlayer = null;
+            foreach(GameObject player in m_players)
+            {
+                float dist = Vector3.Distance(player.transform.position, gameObject.transform.position);
+                if (dist < minDistance)
+                {
+                    minDistance = dist;
+                    minPlayer = player;
+                }
+            }
+            if (minPlayer != null && minDistance < m_minPotatoDistance)
+            {
+                TransferPotato(minPlayer);
+            } else
+            {
+                Debug.Log("Not close enough for potato transfer");
+            }
+        }
     }
 
     public override void ProcessVerticalAxis(float axis)
+    {
+
+    }
+
+    public void TransferPotato(GameObject playerObject)
     {
 
     }
