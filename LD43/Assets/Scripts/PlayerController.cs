@@ -110,18 +110,21 @@ public class PlayerController : NetworkBehaviour {
     {
         if(Input.GetKeyDown(KeyCode.Z))
         {
+            currentSceneName = "FrostRunner2";
             NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("FrostRunner2");
             NetworkManager.singleton.ServerChangeScene("FrostRunner2");
         }
 
         if (Input.GetKeyDown(KeyCode.M))
         {
+            currentSceneName = "BomberMan";
             NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("BomberMan");
             NetworkManager.singleton.ServerChangeScene("BomberMan");
         }
 
         if (Input.GetKeyDown(KeyCode.N))
         {
+            currentSceneName = "JumpRope";
             NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("JumpRope");
 
             NetworkManager.singleton.ServerChangeScene("JumpRope");
@@ -129,6 +132,7 @@ public class PlayerController : NetworkBehaviour {
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            currentSceneName = "PotatoScene";
             NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("PotatoScene");
 
             NetworkManager.singleton.ServerChangeScene("PotatoScene");
@@ -136,8 +140,8 @@ public class PlayerController : NetworkBehaviour {
 
         if (Input.GetKeyDown(KeyCode.H))
         {
+            currentSceneName = "HubScene";
             NetworkManager.singleton.GetComponent<SceneController>().ChangeSceneName("HubScene");
-
             NetworkManager.singleton.ServerChangeScene("HubScene");
         }
     }

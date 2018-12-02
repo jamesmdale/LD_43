@@ -12,7 +12,12 @@ public class InputManager_Hub : InputManager {
 	// Update is called once per frame
 	void Update () {
 
-	}
+        if (GetComponentInParent<PlayerController>().currentSceneName != "HubScene")
+        {
+            return;
+        }
+
+    }
     
     public override void ProcessHorizontalAxis(float axis)
     {

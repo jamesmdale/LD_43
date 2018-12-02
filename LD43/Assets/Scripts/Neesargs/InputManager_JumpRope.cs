@@ -11,8 +11,11 @@ public class InputManager_JumpRope : InputManager {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (GetComponentInParent<PlayerController>().currentSceneName != "JumpRope")
+        {
+            return;
+        }
+    }
 
     public override void ProcessSpace(bool isDown)
     {

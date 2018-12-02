@@ -11,8 +11,11 @@ public class InputManager_Bomberman : InputManager {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (GetComponentInParent<PlayerController>().currentSceneName != "BomberMan")
+        {
+            return;
+        }
+    }
 
     public override void ProcessSpace(bool isDown)
     {
