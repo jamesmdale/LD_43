@@ -21,7 +21,6 @@ public class InputManager_Hub : InputManager {
         float y = Input.GetAxis("Vertical") * Time.deltaTime * m_playerSpeed;
 
         gameObject.transform.Translate(x, y, 0.0f);
-
     }
     
     public override void ProcessHorizontalAxis(float axis)
