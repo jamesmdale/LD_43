@@ -82,7 +82,8 @@ public class InputManager_HotPotato : InputManager {
         Potato potato = GetPotato();
         if (potato != null)
         {
-            potato.CmdSetPlayer(playerObject);
+            Debug.Log("Passing to player: " + playerObject.GetComponent<PlayerController>().m_playerID);
+            potato.CmdSetPlayer(playerObject.GetComponent<PlayerController>().m_playerID);
         } else
         {
             Debug.Log("no potato today :(");

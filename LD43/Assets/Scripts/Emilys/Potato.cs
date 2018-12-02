@@ -8,9 +8,9 @@ public class Potato : NetworkBehaviour {
     float m_age = 0.0f;
 
     [SyncVar]
-    int m_playerID;
+    public int m_playerID = -1;
 
-    GameObject m_player;
+    public GameObject m_player;
 
 	// Use this for initialization
 	void Start () {
@@ -25,11 +25,14 @@ public class Potato : NetworkBehaviour {
     [Command]
     public void CmdSetPlayer(int playerID)
     {
-        //if (!isServer)
-        //{
-        //    return;
-        //}
+        if (!isServer)
+        {
+            Debug.Log("Tried to assign potato to" + playerID + " (was " + m_playerID + ") on a client");
+            return;
+        }
         m_playerID = playerID;
+
+
         m_player = GetPlayerWithID(playerID) ;
 
 
@@ -54,6 +57,7 @@ public class Potato : NetworkBehaviour {
     // Update is called once per frame
     void Update () {
         m_age += Time.deltaTime;
+        
         //if (m_age > m_lifetime)
         //{
         //    Debug.Log("Kabooom");
@@ -64,8 +68,20 @@ public class Potato : NetworkBehaviour {
 
         if (m_player != null)
         {
+            if (m_player.GetComponent<PlayerController>().m_playerID != m_playerID)
+            {
+                m_player = GetPlayerWithID(m_playerID);
+            }
             gameObject.transform.position = new Vector3(m_player.transform.position.x, m_player.transform.position.y + 0.5f, m_player.transform.position.z);
             gameObject.transform.parent = m_player.transform;
+        } else
+        {
+            m_player = GetPlayerWithID(m_playerID);
+            if (m_player != null)
+            {
+                gameObject.transform.position = new Vector3(m_player.transform.position.x, m_player.transform.position.y + 0.5f, m_player.transform.position.z);
+                gameObject.transform.parent = m_player.transform;
+            }
         }
     }
 }
