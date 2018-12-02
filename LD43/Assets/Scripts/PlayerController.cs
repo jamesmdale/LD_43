@@ -9,6 +9,9 @@ public class PlayerController : NetworkBehaviour
     [SyncVar]
     public string displayName = "CoolZac";
 
+    [SyncVar]
+    public int m_playerID = -1;
+
     //public GameObject playerServerData;
 
    // [SyncVar]
@@ -21,6 +24,7 @@ public class PlayerController : NetworkBehaviour
             return;
 
         displayName = NetworkManager.singleton.GetComponent<StorePlayerName>().playerName;
+        CmdSetPlayerID(NetworkManager.singleton.GetComponent<SacrificialNetworkManager>().m_localConnectionID);
 
         //CmdGeneratePlayerServerData();
     }
@@ -46,5 +50,19 @@ public class PlayerController : NetworkBehaviour
         //myPlayerServerDataReference.transform.parent = gameObject.transform;
 
         //myPlayerServerDataReference.GetComponent<PlayerServerController>().SetPlayerDisplayName(displayName);
+    }
+
+    [Command]
+    public void CmdSetPlayerID(int playerID)
+    {
+        if (!isServer)
+        {
+            Debug.Log("I am not the server.");
+            return;
+        } else
+        {
+            m_playerID = playerID;
+            Debug.Log("Assigning player id " + m_playerID + " on server");
+        }
     }
 }

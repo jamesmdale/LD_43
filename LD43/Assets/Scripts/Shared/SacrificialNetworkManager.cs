@@ -19,6 +19,7 @@ using UnityEngine.Networking.Match;
 
 public class SacrificialNetworkManager : NetworkManager
 {
+    public int m_localConnectionID;
     //public List<LevelNameAndInputManager> scenes = new List<LevelNameAndInputManager>();
     //public string currentSceneName = "HubScene";
     //public static SceneController sceneControllerInstance;
@@ -57,10 +58,11 @@ public class SacrificialNetworkManager : NetworkManager
 
     public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
     {
-        base.OnServerAddPlayer(conn, playerControllerId);
-        //var player = (GameObject)GameObject.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+        //base.OnServerAddPlayer(conn, playerControllerId);
+        GameObject player = (GameObject)GameObject.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+        //player.GetComponent<PlayerController>().CmdSetPlayerID(conn.connectionId);
 
-       // NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
+        NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
 
         Debug.Log("Client has requested to get his player added to the game pcontrollerid= " + playerControllerId + "connID= " + conn.connectionId);
         GameController.g_gameController.AddPlayer(conn.connectionId);
@@ -119,6 +121,8 @@ public class SacrificialNetworkManager : NetworkManager
     {
 
         base.OnClientConnect(conn);
+
+        m_localConnectionID = conn.connectionId;
 
         Debug.Log("Connected successfully to server, now to set up other stuff for the client...");
 

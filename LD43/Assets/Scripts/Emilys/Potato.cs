@@ -6,7 +6,10 @@ using UnityEngine.Networking;
 public class Potato : NetworkBehaviour {
     public float m_lifetime = 999.0f;
     float m_age = 0.0f;
+
     [SyncVar]
+    int m_playerID;
+
     GameObject m_player;
 
 	// Use this for initialization
@@ -19,23 +22,37 @@ public class Potato : NetworkBehaviour {
         m_lifetime = lifetime;
     }
 
-    //[Command]
-    public void CmdSetPlayer(GameObject player)
+    [Command]
+    public void CmdSetPlayer(int playerID)
     {
         //if (!isServer)
         //{
         //    return;
         //}
-        m_player = player;
+        m_playerID = playerID;
+        m_player = GetPlayerWithID(playerID) ;
 
 
         //transform.localPosition.Set(0.0f, .5f, 0.0f);
-        Debug.Log("Following : " + player);
+        Debug.Log("Following : " + playerID);
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    GameObject GetPlayerWithID(int playerID)
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject p in players)
+        {
+            if (p.GetComponent<PlayerController>().m_playerID == playerID)
+            {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    // Update is called once per frame
+    void Update () {
         m_age += Time.deltaTime;
         //if (m_age > m_lifetime)
         //{
