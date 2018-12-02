@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ConnectToNetScene.unity
     guid: 122b15f96159d484286f15667e2d6304
+  - enabled: 1
+    path: Assets/Scenes/FrostRunner2.unity
+    guid: f28920eea9da7be42a0098d019736e20
   m_configObjects: {}
