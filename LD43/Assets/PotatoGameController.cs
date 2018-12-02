@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class PotatoGameController : MonoBehaviour {
+public class PotatoGameController : NetworkBehaviour {
     public Text m_tutorialText;
     public float m_tutorialTime = 5.0f;
+    public GameObject m_potatoPrefab;
 
 
     GameObject m_chosenPlayer;
@@ -13,7 +15,8 @@ public class PotatoGameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+       
+        CmdSpawnPotato();
 	}
 	
 	// Update is called once per frame
@@ -25,4 +28,16 @@ public class PotatoGameController : MonoBehaviour {
         }
 
 	}
+
+    [Command]
+    void CmdSpawnPotato()
+    {
+        GameObject potato = GameObject.Instantiate(m_potatoPrefab);
+
+        // Spawn the bullet on the Clients
+        NetworkServer.Spawn(potato);
+
+        // Destroy the bullet after 2 seconds
+        //Destroy(potato, 2.0f);
+    }
 }

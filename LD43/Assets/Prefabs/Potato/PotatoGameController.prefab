@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 223788157296681044}
   - component: {fileID: 222468717311428718}
   - component: {fileID: 114796991379235428}
+  - component: {fileID: 114231796711184434}
   m_Layer: 0
   m_Name: PotatoGameController
   m_TagString: Untagged
@@ -82,6 +83,38 @@ MonoBehaviour:
   m_Text: 'Don''t get stuck with the potato
 
 '
+--- !u!114 &114231796711184434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518842347991316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 45
+    i1: 119
+    i2: 154
+    i3: 153
+    i4: 47
+    i5: 86
+    i6: 214
+    i7: 212
+    i8: 58
+    i9: 203
+    i10: 41
+    i11: 78
+    i12: 186
+    i13: 203
+    i14: 86
+    i15: 228
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114706450349115304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,6 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c612c4b78393c9a48a01c722f4405675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_tutorialText: {fileID: 0}
+  m_tutorialTime: 5
+  m_potatoPrefab: {fileID: 0}
 --- !u!114 &114796991379235428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,7 +196,7 @@ RectTransform:
   m_Children:
   - {fileID: 224266760634294048}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
