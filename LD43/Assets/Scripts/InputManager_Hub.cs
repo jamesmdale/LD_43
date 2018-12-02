@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InputManager_Hub : InputManager {
+    float m_playerSpeed = 5.0f;
 
 	// Use this for initialization
 	void Start ()
@@ -15,6 +16,11 @@ public class InputManager_Hub : InputManager {
     {
         if (!isLocalPlayer)
             return;
+
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime * m_playerSpeed;
+        float y = Input.GetAxis("Vertical") * Time.deltaTime * m_playerSpeed;
+
+        gameObject.transform.Translate(x, y, 0.0f);
 
     }
     

@@ -17,6 +17,11 @@ public class InputManager_HotPotato : InputManager {
     {
         if (!isLocalPlayer)
             return;
+
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime * m_playerSpeed;
+        float y = Input.GetAxis("Vertical") * Time.deltaTime * m_playerSpeed;
+
+        gameObject.transform.Translate(x, y, 0.0f);
     }
 
     public override void ProcessHorizontalAxis(float axis)
