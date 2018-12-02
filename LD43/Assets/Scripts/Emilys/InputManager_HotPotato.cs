@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputManager_HotPotato : InputManager {
     GameObject player;
     float m_minPotatoDistance = 3.0f;
+    float m_playerSpeed = 5.0f;
 
     // Use this for initialization
     void Start ()  
@@ -23,7 +24,7 @@ public class InputManager_HotPotato : InputManager {
 
     public override void ProcessHorizontalAxis(float axis)
     {
-
+        gameObject.transform.Translate(axis * Time.deltaTime * m_playerSpeed, 0.0f, 0.0f);
     }
 
     public override void ProcessShift(bool isDown)
@@ -59,7 +60,7 @@ public class InputManager_HotPotato : InputManager {
 
     public override void ProcessVerticalAxis(float axis)
     {
-
+        gameObject.transform.Translate(0.0f, axis * Time.deltaTime * m_playerSpeed, 0.0f);
     }
 
     public void TransferPotato(GameObject playerObject)
