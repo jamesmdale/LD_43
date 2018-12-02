@@ -62,7 +62,8 @@ public class SacrificialNetworkManager : NetworkManager
 
        // NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
 
-        Debug.Log("Client has requested to get his player added to the game");
+        Debug.Log("Client has requested to get his player added to the game pcontrollerid= " + playerControllerId + "connID= " + conn.connectionId);
+        GameController.g_gameController.AddPlayer(conn.connectionId);
 
     }
 

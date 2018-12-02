@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class GameController : MonoBehaviour {
+using UnityEngine.Networking;
+public class GameController : NetworkBehaviour
+{
 
     public static GameController g_gameController = null;
-    public Canvas m_canvas;
+    public PlayerWidgetController[] m_widgets;
     public PlayerController[] m_players;
 
     //singleton AF
@@ -37,8 +38,15 @@ public class GameController : MonoBehaviour {
 		
 	}
 
-    void AddPlayer(PlayerController controller)
+    public void AddPlayer(int playerID)
     {
-
+        Debug.Log("Setting player in canvas...");
+        if (playerID < m_widgets.Length && playerID >= 0)
+        {
+            m_widgets[playerID].SetPlayerID(playerID);
+        } else
+        {
+            Debug.Log("No widget for player: " + playerID);
+        }
     }
 }
