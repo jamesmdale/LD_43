@@ -6,27 +6,19 @@ using UnityEngine.Networking;
 
 public class PlayerController : NetworkBehaviour
 {
-    [SyncVar]
-    public string displayName = "CoolZac";
+    public string displayName = "INVALID_NAME";
 
     [SyncVar]
     public int m_playerID = -1;
 
-    //public GameObject playerServerData;
-
-   // [SyncVar]
-    //public GameObject myPlayerServerDataReference;
-
-    // Use this for initialization
     void Start ()
     {
         if (!isLocalPlayer)
             return;
 
-        displayName = NetworkManager.singleton.GetComponent<StorePlayerName>().playerName;
-        CmdSetPlayerID(NetworkManager.singleton.GetComponent<SacrificialNetworkManager>().m_localConnectionID);
 
-        //CmdGeneratePlayerServerData();
+        CmdSetPlayerID(NetworkManager.singleton.GetComponent<SacrificialNetworkManager>().m_localConnectionID);
+        CmdUpdateDisplayName(displayName = NetworkManager.singleton.GetComponent<StorePlayerName>().playerName);
     }
 
     public override void OnStartLocalPlayer()
@@ -42,14 +34,9 @@ public class PlayerController : NetworkBehaviour
     }
 
     [Command]
-    void CmdGeneratePlayerServerData()
+    void CmdUpdateDisplayName(string playerName)
     {
-        //NetworkServer.Spawn(playerServerData);
-
-        //myPlayerServerDataReference = (GameObject)Instantiate(playerServerData)
-        //myPlayerServerDataReference.transform.parent = gameObject.transform;
-
-        //myPlayerServerDataReference.GetComponent<PlayerServerController>().SetPlayerDisplayName(displayName);
+        displayName = playerName;
     }
 
     [Command]
