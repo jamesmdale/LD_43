@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4514180582294692}
   - component: {fileID: 212210086245087130}
-  - component: {fileID: 114846634520037932}
   - component: {fileID: 114002623574565606}
   m_Layer: 0
   m_Name: Explosion
@@ -74,17 +73,6 @@ MonoBehaviour:
     i15: 186
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &114846634520037932
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1598010431394410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e5c273d25d996b40b6b7cf9da220809, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212210086245087130
 SpriteRenderer:
   m_ObjectHideFlags: 1
