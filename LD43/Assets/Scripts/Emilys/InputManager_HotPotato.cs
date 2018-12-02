@@ -22,6 +22,12 @@ public class InputManager_HotPotato : InputManager {
         float y = Input.GetAxis("Vertical") * Time.deltaTime * m_playerSpeed;
 
         gameObject.transform.Translate(x, y, 0.0f);
+
+        if (Input.GetKeyDown("space"))
+        {
+            Debug.Log("Potato passin");
+            PassPotato();
+        }
     }
 
     public override void ProcessHorizontalAxis(float axis)
@@ -36,12 +42,17 @@ public class InputManager_HotPotato : InputManager {
 
     public override void ProcessSpace(bool isDown)
     {
-        if (isDown)
+
+    }
+
+    public void PassPotato()
+    { 
+        GameObject[] m_players = GameObject.FindGameObjectsWithTag("Player");
+        float minDistance = 9999.0f;
+        GameObject minPlayer = null;
+        foreach(GameObject player in m_players)
         {
-            GameObject[] m_players = GameObject.FindGameObjectsWithTag("Player");
-            float minDistance = 9999.0f;
-            GameObject minPlayer = null;
-            foreach(GameObject player in m_players)
+            if (gameObject != player)
             {
                 float dist = Vector3.Distance(player.transform.position, gameObject.transform.position);
                 if (dist < minDistance)
@@ -50,14 +61,15 @@ public class InputManager_HotPotato : InputManager {
                     minPlayer = player;
                 }
             }
-            if (minPlayer != null && minDistance < m_minPotatoDistance)
-            {
-                TransferPotato(minPlayer);
-            } else
-            {
-                Debug.Log("Not close enough for potato transfer");
-            }
         }
+        if (minPlayer != null && minDistance < m_minPotatoDistance)
+        {
+            TransferPotato(minPlayer);
+        } else
+        {
+            Debug.Log("Not close enough for potato transfer");
+        }
+        
     }
 
     public override void ProcessVerticalAxis(float axis)
@@ -67,7 +79,19 @@ public class InputManager_HotPotato : InputManager {
 
     public void TransferPotato(GameObject playerObject)
     {
-
+        Potato potato = GetPotato();
+        if (potato != null)
+        {
+            potato.CmdSetPlayer(playerObject);
+        } else
+        {
+            Debug.Log("no potato today :(");
+        }
     }
 
+
+    Potato GetPotato()
+    {
+        return gameObject.GetComponentInChildren<Potato>();
+    }
 }
