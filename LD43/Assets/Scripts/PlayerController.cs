@@ -6,8 +6,7 @@ using UnityEngine.Networking;
 
 public class PlayerController : NetworkBehaviour
 {
-    [SyncVar(hook = "OnNameChange")]
-    public string displayName = "CoolZac";
+    public string displayName = "INVALID_NAME";
 
     void Start ()
     {
@@ -35,10 +34,4 @@ public class PlayerController : NetworkBehaviour
     {
         displayName = playerName;
     }
-
-
-    //void OnNameChange()
-    //{
-    //    CmdUpdateDisplayName(displayName);
-    //}
 }
