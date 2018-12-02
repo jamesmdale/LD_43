@@ -22,6 +22,10 @@ public class Potato : NetworkBehaviour {
     //[Command]
     public void CmdSetPlayer(GameObject player)
     {
+        //if (!isServer)
+        //{
+        //    return;
+        //}
         m_player = player;
 
 
