@@ -5,7 +5,10 @@ using UnityEngine.Networking;
 
 public class InputManager_Bomberman : NetworkBehaviour
 {
-    float m_playerSpeed = 3.0f;
+    [SyncVar]
+    float delayTimeUntilNextBomb = 0.0f;
+
+    float playerSpeed = 3.0f;
     public GameObject bombPrefabReference;
 
     // Use this for initialization
@@ -20,8 +23,8 @@ public class InputManager_Bomberman : NetworkBehaviour
         if (!isLocalPlayer)
             return;
 
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * m_playerSpeed;
-        float y = Input.GetAxis("Vertical") * Time.deltaTime * m_playerSpeed;
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime * playerSpeed;
+        float y = Input.GetAxis("Vertical") * Time.deltaTime * playerSpeed;
 
         gameObject.transform.Translate(x, y, 0.0f);
 
@@ -29,7 +32,7 @@ public class InputManager_Bomberman : NetworkBehaviour
         bool spaceJustPressed = Input.GetKeyDown(KeyCode.Space);
         if(spaceJustPressed)
         {
-            CmdProcessSpace();
+            CmdProcessSpace();            
         }
     }
 
@@ -40,5 +43,20 @@ public class InputManager_Bomberman : NetworkBehaviour
 
         var bomb = (GameObject)Instantiate(bombPrefabReference, gameObject.transform.position, Quaternion.identity);
         NetworkServer.Spawn(bomb);
+
+        delayTimeUntilNextBomb = 1.0f;
+    }
+
+    [Command]
+    public void CmdUpdateBombTimerDelay()
+    {
+        if (delayTimeUntilNextBomb < 0.0f)
+        {
+            delayTimeUntilNextBomb = 0.0f;
+        }
+        else
+        {
+            delayTimeUntilNextBomb -= Time.deltaTime;
+        }
     }
 }
