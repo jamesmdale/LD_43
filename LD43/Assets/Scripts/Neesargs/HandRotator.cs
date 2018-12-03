@@ -26,6 +26,14 @@ public class HandRotator : NetworkBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!isServer)
+            return;
 
+        GameObject cObject = collision.gameObject;
+        if( cObject.tag == "Player" )
+        {
+            // Collided with a player
+            cObject.GetComponent<InputManager_JumpRope>().RpcJustCollidedWithHand();
+        }
     }
 }
