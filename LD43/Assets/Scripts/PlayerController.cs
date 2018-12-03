@@ -8,12 +8,16 @@ public class PlayerController : NetworkBehaviour
 {
     public string displayName = "INVALID_NAME";
 
+    [SyncVar]
+    public int m_playerID = -1;
+
     void Start ()
     {
         if (!isLocalPlayer)
             return;
 
-        //only server will run this
+        CmdSetPlayerID((int) netId.Value);
+        //CmdSetPlayerID(NetworkManager.singleton.GetComponent<SacrificialNetworkManager>().m_localConnectionID);
         CmdUpdateDisplayName(displayName = NetworkManager.singleton.GetComponent<StorePlayerName>().playerName);
     }
 
@@ -33,5 +37,19 @@ public class PlayerController : NetworkBehaviour
     void CmdUpdateDisplayName(string playerName)
     {
         displayName = playerName;
+    }
+
+    [Command]
+    public void CmdSetPlayerID(int playerID)
+    {
+        if (!isServer)
+        {
+            Debug.Log("I am not the server.");
+            return;
+        } else
+        {
+            m_playerID = playerID;
+            Debug.Log("Assigning player id " + m_playerID + " on server");
+        }
     }
 }
