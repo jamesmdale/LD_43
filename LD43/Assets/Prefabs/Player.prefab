@@ -97,6 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0cebb0099a6d1488af9988446ad40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_potatoPrefab: {fileID: 1072695770626660, guid: 5df7d4a4672e0c94c8de43ee27c3c840,
+    type: 2}
+  m_potatoBaby: {fileID: 0}
+  m_playerHasPotato: 0
+  m_potatoTimer: 15
 --- !u!114 &114317762657663160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: CoolZac
+  m_playerID: -1
 --- !u!114 &114723982819991226
 MonoBehaviour:
   m_ObjectHideFlags: 1
