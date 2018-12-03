@@ -133,9 +133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: CoolZac
-  playerServerData: {fileID: 1334072200926248, guid: 7cc43ed86d5439643bbd735e753a5f72,
-    type: 2}
-  myPlayerServerDataReference: {fileID: 0}
 --- !u!114 &114723982819991226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f2f79f5a8ae60a4288c8c304ed2a785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyToPress: 0
 --- !u!114 &114752422823911152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,6 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d7d7bc67b46c1418bc9bf12c5427b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bombPrefabReference: {fileID: 1492238143397652, guid: b18e67449c972b942a95488da332e448,
+    type: 2}
 --- !u!114 &114819545660469506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,6 +222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4093223352e7a4bb8379d4ff09c1c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpDuration: 0.2
+  maxScale: 7
 --- !u!212 &212963285899109078
 SpriteRenderer:
   m_ObjectHideFlags: 1
