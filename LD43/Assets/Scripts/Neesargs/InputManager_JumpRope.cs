@@ -129,6 +129,10 @@ public class InputManager_JumpRope : NetworkBehaviour
     [Command]
     void CmdTakeAHit()
     {
+        // If we just took a hit, we don't take hit again, that soon!
+        if (timeRemainingHit > 0.0f)
+            return;
+
         // Shows red color for some time
         timeRemainingHit = hitDuration;
 
