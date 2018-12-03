@@ -31,7 +31,7 @@ GameObject:
   - component: {fileID: 114723982819991226}
   - component: {fileID: 114752422823911152}
   - component: {fileID: 114317762657663160}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -97,10 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0cebb0099a6d1488af9988446ad40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_potatoPrefab: {fileID: 1072695770626660, guid: 5df7d4a4672e0c94c8de43ee27c3c840,
-    type: 2}
-  m_playerHasPotato: 0
-  m_potatoTimer: 999
 --- !u!114 &114317762657663160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,7 +133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: CoolZac
-  m_playerID: -1
 --- !u!114 &114723982819991226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f2f79f5a8ae60a4288c8c304ed2a785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyToPress: 0
 --- !u!114 &114752422823911152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d7d7bc67b46c1418bc9bf12c5427b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bombPrefabReference: {fileID: 0}
 --- !u!114 &114819545660469506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,6 +221,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4093223352e7a4bb8379d4ff09c1c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chancesLeft: 4
+  ignoreCollision: 0
+  hitDuration: 1
+  jumpDuration: 1
+  maxScale: 7
 --- !u!212 &212963285899109078
 SpriteRenderer:
   m_ObjectHideFlags: 1

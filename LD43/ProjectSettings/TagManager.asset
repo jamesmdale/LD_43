@@ -13,9 +13,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - ClockHands
+  - Player
+  - CircleBoundary
   - 
   - 
   - 
@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Early
+    uniqueID: 362339103
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Later
+    uniqueID: 3103318421
     locked: 0
