@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114470700132817262}
   - component: {fileID: 114433200840550396}
   m_Layer: 0
-  m_Name: InputScriptActivator
+  m_Name: GameStateController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
