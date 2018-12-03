@@ -61,6 +61,7 @@ public class SacrificialNetworkManager : NetworkManager
         //base.OnServerAddPlayer(conn, playerControllerId);
         GameObject player = (GameObject)GameObject.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
         //player.GetComponent<PlayerController>().CmdSetPlayerID(conn.connectionId);
+        
 
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
 
@@ -124,7 +125,7 @@ public class SacrificialNetworkManager : NetworkManager
 
         m_localConnectionID = conn.connectionId;
 
-        Debug.Log("Connected successfully to server, now to set up other stuff for the client...");
+        Debug.Log("Connected successfully to server, now to set up other stuff for the client... " + conn);
 
     }
 

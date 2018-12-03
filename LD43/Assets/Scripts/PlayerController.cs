@@ -16,8 +16,8 @@ public class PlayerController : NetworkBehaviour
         if (!isLocalPlayer)
             return;
 
-
-        CmdSetPlayerID(NetworkManager.singleton.GetComponent<SacrificialNetworkManager>().m_localConnectionID);
+        CmdSetPlayerID((int) netId.Value);
+        //CmdSetPlayerID(NetworkManager.singleton.GetComponent<SacrificialNetworkManager>().m_localConnectionID);
         CmdUpdateDisplayName(displayName = NetworkManager.singleton.GetComponent<StorePlayerName>().playerName);
     }
 
