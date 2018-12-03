@@ -162,14 +162,4 @@ public class InputManager_JumpRope : NetworkBehaviour
     {
         CmdTakeAHit();
     }
-
-    public void IgnoreCollisionWithClockHands( bool ignore )
-    {
-        Vector2 pos2D = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
-        
-        if( ignore )
-            gameObject.transform.position = new Vector3(pos2D.x, pos2D.y, -2.0f);
-        else
-            gameObject.transform.position = new Vector3(pos2D.x, pos2D.y, 0.0f);
-    }
 }
