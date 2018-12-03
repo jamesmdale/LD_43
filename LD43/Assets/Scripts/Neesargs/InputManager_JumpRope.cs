@@ -20,8 +20,11 @@ public class InputManager_JumpRope : NetworkBehaviour
     [SyncVar]
     private bool playerIsOutOfMatch = false;
 
+    [SyncVar]
+    public bool ignoreCollision = false;
+
     public float hitDuration = 1.0f;
-    public float jumpDuration = 0.2f;
+    public float jumpDuration = 1.0f;
     public float maxScale = 7.0f;
 
     private float m_playerSpeed = 5.0f;
@@ -44,16 +47,30 @@ public class InputManager_JumpRope : NetworkBehaviour
     {
         gameObject.transform.localScale = finalScale;
 
+        if (ignoreCollision == true)
+            Physics2D.IgnoreLayerCollision(8, 9, true);
+        else
+            Physics2D.IgnoreLayerCollision(8, 9, false);
+
         if (timeRemainingHit > 0.0f)
-            GetComponent<SpriteRenderer>().material.color = Color.red;           // Was hit
+        {
+            Physics2D.IgnoreLayerCollision(8, 9, true);
+
+            if(isLocalPlayer)
+                GetComponent<SpriteRenderer>().material.color = Color.red;           // Was hit
+            else
+                GetComponent<SpriteRenderer>().material.color = Color.yellow;        // Was hit
+        }
         else
         {
-            if(isLocalPlayer)
+            Physics2D.IgnoreLayerCollision(8, 9, false);
+
+            if (isLocalPlayer)
                 GetComponent<SpriteRenderer>().material.color = Color.blue;          // No hits!
             else
-                GetComponent<SpriteRenderer>().material.color = Color.white;          // No hits!
+                GetComponent<SpriteRenderer>().material.color = Color.white;         // No hits!
         }
-        
+
         if (!isLocalPlayer)
             return;
 
@@ -123,6 +140,11 @@ public class InputManager_JumpRope : NetworkBehaviour
     [Command]
     void CmdSetFinalScale( float scale )
     {
+        if (scale > 1.0f)
+            ignoreCollision = true;
+        else
+            ignoreCollision = false;
+
         finalScale = new Vector3(scale, scale, finalScale.z);
     }
 
