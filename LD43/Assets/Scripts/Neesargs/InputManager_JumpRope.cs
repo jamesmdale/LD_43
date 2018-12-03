@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
-
-
 public class InputManager_JumpRope : NetworkBehaviour
 {
     [SyncVar]
@@ -14,9 +12,9 @@ public class InputManager_JumpRope : NetworkBehaviour
     [SyncVar]
     private float timeRemainingHit = 0.0f;
 
-    [SyncVar]
-    private int chancesLeft = 3;
-
+    [SyncVar] /*(hook = "OnChancesLeftChanged")*/
+    public int chancesLeft = 4;
+     
     [SyncVar]
     private bool playerIsOutOfMatch = false;
 
@@ -30,32 +28,23 @@ public class InputManager_JumpRope : NetworkBehaviour
     private float m_playerSpeed = 5.0f;
     private float timeRemainingJump = 0.0f;
 
-    // When this script gets enabled
-    private void OnEnable()
-    {
-
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
+    private Time lastTimeCalledHit;
 
     // Update is called once per frame
     void Update()
     {
+        // Conveyance for Jumping : SCALE
         gameObject.transform.localScale = finalScale;
+        
+        // Ignores collision while Jumping
+         if (ignoreCollision == true)
+             Physics2D.IgnoreLayerCollision(8, 9, true);
+         else
+             Physics2D.IgnoreLayerCollision(8, 9, false);
 
-        if (ignoreCollision == true)
-            Physics2D.IgnoreLayerCollision(8, 9, true);
-        else
-            Physics2D.IgnoreLayerCollision(8, 9, false);
-
+        // Conveyance for Jumping : COLOR
         if (timeRemainingHit > 0.0f)
         {
-            Physics2D.IgnoreLayerCollision(8, 9, true);
-
             if(isLocalPlayer)
                 GetComponent<SpriteRenderer>().material.color = Color.red;           // Was hit
             else
@@ -63,17 +52,17 @@ public class InputManager_JumpRope : NetworkBehaviour
         }
         else
         {
-            Physics2D.IgnoreLayerCollision(8, 9, false);
-
             if (isLocalPlayer)
                 GetComponent<SpriteRenderer>().material.color = Color.blue;          // No hits!
             else
                 GetComponent<SpriteRenderer>().material.color = Color.white;         // No hits!
         }
 
+        // Only a local player can execute from belove
         if (!isLocalPlayer)
             return;
 
+        // Only players still playing can update!
         if (playerIsOutOfMatch)
             return;
 
@@ -88,7 +77,6 @@ public class InputManager_JumpRope : NetworkBehaviour
         bool spaceJustPressed = Input.GetKeyDown(KeyCode.Space);
         if (spaceJustPressed && (timeRemainingJump <= 0.0f))
         {
-            Debug.Log("JUMPIE!");
             timeRemainingJump = jumpDuration;
         }
 

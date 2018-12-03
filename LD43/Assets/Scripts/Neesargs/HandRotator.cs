@@ -35,7 +35,7 @@ public class HandRotator : NetworkBehaviour
             // Collided with a player
             InputManager_JumpRope script = cObject.GetComponent<InputManager_JumpRope>();
 
-            if(script.ignoreCollision == false)
+            if (script.ignoreCollision == false)
                 script.RpcJustCollidedWithHand();
         }
     }
