@@ -156,7 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d7d7bc67b46c1418bc9bf12c5427b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombPrefabReference: {fileID: 0}
+  bombPrefabReference: {fileID: 1492238143397652, guid: b18e67449c972b942a95488da332e448,
+    type: 2}
 --- !u!114 &114819545660469506
 MonoBehaviour:
   m_ObjectHideFlags: 1
