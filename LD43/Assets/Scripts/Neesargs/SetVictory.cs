@@ -18,7 +18,7 @@ public class SetVictory : MonoBehaviour
             int localChancesLeft = localPlayer.GetComponent<InputManager_JumpRope>().chancesLeft;
             if (localChancesLeft <= 0)
             {
-                GetComponent<Text>().text = "You, LOOSER!";
+                GetComponent<Text>().text = "You, LOSER!";
                 return;
             }
 

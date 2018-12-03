@@ -24,13 +24,13 @@ public class HandRotator : NetworkBehaviour
         transform.RotateAround( rotateAround.transform.position, new Vector3(0, 0, 1), rotation);
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!isServer)
             return;
 
         GameObject cObject = collision.gameObject;
-        if( cObject.tag == "Player" )
+        if (cObject.tag == "Player")
         {
             // Collided with a player
             InputManager_JumpRope script = cObject.GetComponent<InputManager_JumpRope>();

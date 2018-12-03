@@ -35,12 +35,6 @@ public class InputManager_JumpRope : NetworkBehaviour
     {
         // Conveyance for Jumping : SCALE
         gameObject.transform.localScale = finalScale;
-        
-        // Ignores collision while Jumping
-         if (ignoreCollision == true)
-             Physics2D.IgnoreLayerCollision(8, 9, true);
-         else
-             Physics2D.IgnoreLayerCollision(8, 9, false);
 
         // Conveyance for Jumping : COLOR
         if (timeRemainingHit > 0.0f)
@@ -66,7 +60,7 @@ public class InputManager_JumpRope : NetworkBehaviour
         if (playerIsOutOfMatch)
             return;
 
-        CmdDecreamentTimeRemainingHit();
+        CmdDecreamentTimeRemainingHit( Time.deltaTime );
 
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * m_playerSpeed;
         float y = Input.GetAxis("Vertical") * Time.deltaTime * m_playerSpeed;
@@ -155,10 +149,10 @@ public class InputManager_JumpRope : NetworkBehaviour
     }
 
     [Command]
-    void CmdDecreamentTimeRemainingHit()
+    void CmdDecreamentTimeRemainingHit( float deltaSeconds )
     {
         if (timeRemainingHit > 0.0f)
-            timeRemainingHit -= Time.deltaTime;
+            timeRemainingHit -= deltaSeconds;
         else
             timeRemainingHit = 0.0f;
     }
@@ -167,5 +161,15 @@ public class InputManager_JumpRope : NetworkBehaviour
     public void RpcJustCollidedWithHand()
     {
         CmdTakeAHit();
+    }
+
+    public void IgnoreCollisionWithClockHands( bool ignore )
+    {
+        Vector2 pos2D = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+        
+        if( ignore )
+            gameObject.transform.position = new Vector3(pos2D.x, pos2D.y, -2.0f);
+        else
+            gameObject.transform.position = new Vector3(pos2D.x, pos2D.y, 0.0f);
     }
 }
