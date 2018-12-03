@@ -61,6 +61,7 @@ public class SceneController : MonoBehaviour {
 
     void GoToLevelCheck()
     {
+
         if (Input.GetKeyDown(KeyCode.Keypad4))
         {
             currentSceneName = "FrostRunner2";
