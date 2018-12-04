@@ -29,9 +29,19 @@ public class PlayerWidgetController : MonoBehaviour {
         Debug.Log("Player text set to " + playerID);
     }
 
+    public void SetPlayer(PlayerController player)
+    {
+        m_player = player;
+        m_playerID = m_player.m_playerID;
+        SetText();
+    }
+
     void SetText()
     {
-        m_text.text = m_name + ": " + m_playerID;
+        if (m_player != null)
+        {
+            m_text.text = m_player.displayName + ": " + m_playerID;
+        }
         SetVisibility();
     }
 
