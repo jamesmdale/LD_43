@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SetVictory : MonoBehaviour
 {
     private GameObject localPlayer;
+    public bool matchEnded = false;
 
     // Update is called once per frame
     void Update ()
@@ -48,6 +49,7 @@ public class SetVictory : MonoBehaviour
             if(otherAreOutOfMatch)
             {
                 GetComponent<Text>().text = "Victory!";
+                matchEnded = true;
             }
         }
 	}

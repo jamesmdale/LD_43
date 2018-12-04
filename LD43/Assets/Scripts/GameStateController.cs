@@ -7,17 +7,17 @@ public class GameStateController : NetworkBehaviour
 {
     public static GameStateController Instance { get; private set; }
 
+    public string hubLevel;
+
+    [SerializeField]
+    public List<string> miniGameScenes = new List<string>();
+
     private void Awake()
     {
-
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(Instance.gameObject);
         }
     }
 
@@ -51,5 +51,14 @@ public class GameStateController : NetworkBehaviour
 
         if (nextSceneName != "")
             NetworkManager.singleton.ServerChangeScene(nextSceneName);
+    }
+
+    [Command]
+    public void CmdEndMiniGame(bool isServer)
+    {
+        Debug.Log("EndGame called by: [isServer = " + isServer.ToString() + "]");
+
+        if (isServer)
+            NetworkManager.singleton.ServerChangeScene(hubLevel);
     }
 }
