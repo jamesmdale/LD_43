@@ -14,8 +14,9 @@ public class ConnectMenuManager : MonoBehaviour {
     public string playerName;
     
     // Use this for initialization
-	void Start () {
-		
+	void Start ()
+	{
+		storePlayerScript = theNetworkManager.GetComponent<StorePlayerName>();
 	}
 	
 	// Update is called once per frame

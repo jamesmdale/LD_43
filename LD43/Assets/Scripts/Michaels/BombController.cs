@@ -6,8 +6,8 @@ using UnityEngine.Networking;
 public class BombController : NetworkBehaviour
 {
     [SyncVar]
-    public float explosionTimer = 0.0f;
-    public float maxTimeBeforeExplosion = 3.0f;
+    float explosionTimer = 0.0f;
+    float maxTimeBeforeExplosion = 2.0f;
 
     public GameObject explosionPrefabReference;
 
