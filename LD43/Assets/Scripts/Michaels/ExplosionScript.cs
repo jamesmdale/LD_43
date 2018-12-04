@@ -9,12 +9,12 @@ public class ExplosionScript : NetworkBehaviour {
     float explosionTimer = 0.0f;
     float maxLifeTime = 0.25f;
 
-    public float explosionRadius = 0.0f;
+    float explosionRadius = 0.0f;
 
     [SyncVar]
     Vector3 explosionScale = new Vector3(1, 1, 1);
-    float damageRadius = 0.75f;
-    float maxScale = 5.0f;
+    float damageRadius = 1.25f;
+    float maxScale = 10.0f;
 
     // Use this for initialization
     void Start()
