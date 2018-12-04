@@ -11,6 +11,9 @@ public class InputManager_Bomberman : NetworkBehaviour
     float playerSpeed = 3.0f;
     public GameObject bombPrefabReference;
 
+    [SyncVar]
+    bool isPlayerElminated = false;
+
     // Use this for initialization
     void Start ()
     {
@@ -20,7 +23,7 @@ public class InputManager_Bomberman : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isLocalPlayer)
+        if (!isLocalPlayer || isPlayerElminated)
             return;
 
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * playerSpeed;
@@ -58,5 +61,12 @@ public class InputManager_Bomberman : NetworkBehaviour
         {
             delayTimeUntilNextBomb -= Time.deltaTime;
         }
+    }
+
+    [Command]
+    public void CmdSetPlayerEliminated()
+    {
+        isPlayerElminated = true;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 }

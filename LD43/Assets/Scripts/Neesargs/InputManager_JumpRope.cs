@@ -33,6 +33,20 @@ public class InputManager_JumpRope : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool endGame = Input.GetKeyDown(KeyCode.E);
+        if(endGame)
+        {
+            Debug.Log("End Game button pressed!");
+
+            GameObject go = GameObject.Find("GameStateController");
+            if (go == null)
+                Debug.LogError("GameStateController == null");
+            else
+            {
+                go.GetComponent<GameStateController>().CmdEndMiniGame(isServer);
+            }
+        }
+
         // Conveyance for Jumping : SCALE
         gameObject.transform.localScale = finalScale;
 
