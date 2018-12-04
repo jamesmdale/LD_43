@@ -7,7 +7,7 @@ public class BombController : NetworkBehaviour
 {
     [SyncVar]
     public float explosionTimer = 0.0f;
-    public float maxTimeBeforeExplosion = 10.0f;
+    public float maxTimeBeforeExplosion = 3.0f;
 
     public GameObject explosionPrefabReference;
 
