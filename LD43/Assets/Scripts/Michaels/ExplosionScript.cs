@@ -52,6 +52,7 @@ public class ExplosionScript : NetworkBehaviour {
             {
                 //player got hit by explosion
                 Debug.Log("Player hit by explosion");
+                player.GetComponent<InputManager_Bomberman>().CmdSetPlayerEliminated();
             }
         }
 
