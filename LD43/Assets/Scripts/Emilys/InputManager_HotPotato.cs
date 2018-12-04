@@ -13,7 +13,7 @@ public class InputManager_HotPotato : InputManager {
     [SyncVar(hook = "OnPotatoChange")]
     public bool m_playerHasPotato = false;
     [SyncVar(hook = "OnTimerChange")]
-    public float m_potatoTimer = 15.0f;
+    public float m_potatoTimer = 8.0f;
 
     float m_potatoStartTime = 8.0f; 
 
@@ -126,14 +126,16 @@ public class InputManager_HotPotato : InputManager {
     void UpdatePotatoTimer(float ds)
     {
         m_potatoTimer -= ds;
-        if (!isServer)
-            return;
-
         if (m_potatoTimer <= 0.0f)
         {
             Debug.Log("Kaboom");
             m_potatoTimer = 15.0f;
         }
+
+        if (!isServer)
+            return;
+
+
 
         // Debug.Log("Updating timer");
 

@@ -33,6 +33,7 @@ public class PlayerWidgetController : MonoBehaviour {
     {
         m_player = player;
         m_playerID = m_player.m_playerID;
+        m_name = m_player.displayName;
         SetText();
     }
 

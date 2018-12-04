@@ -38,9 +38,11 @@ public class PlayerController : NetworkBehaviour
     {
         if (postStart)
         {
-            
-            CmdSetPlayerID((int)connectionToClient.connectionId);
-            postStart = false;
+            if (connectionToClient != null)
+            {
+                CmdSetPlayerID((int)connectionToClient.connectionId);
+                postStart = false;
+            }
         }
         if (!isLocalPlayer)
             return;
