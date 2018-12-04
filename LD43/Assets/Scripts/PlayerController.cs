@@ -6,19 +6,26 @@ using UnityEngine.Networking;
 
 public class PlayerController : NetworkBehaviour
 {
+    [SyncVar]
     public string displayName = "INVALID_NAME";
 
     [SyncVar]
     public int m_playerID = -1;
 
+    bool postStart = true;
+
     void Start ()
     {
         if (!isLocalPlayer)
             return;
-
-        CmdSetPlayerID((int) netId.Value);
+        postStart = true;
         //CmdSetPlayerID(NetworkManager.singleton.GetComponent<SacrificialNetworkManager>().m_localConnectionID);
         CmdUpdateDisplayName(displayName = NetworkManager.singleton.GetComponent<StorePlayerName>().playerName);
+    }
+
+    private void OnDisable()
+    {
+        enabled = true;
     }
 
     public override void OnStartLocalPlayer()
@@ -29,6 +36,12 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (postStart)
+        {
+            
+            CmdSetPlayerID((int)connectionToClient.connectionId);
+            postStart = false;
+        }
         if (!isLocalPlayer)
             return;
     }
