@@ -42,7 +42,8 @@ public class PotatoGameController : NetworkBehaviour {
             SpawnPotato();
         }
         m_age += Time.deltaTime;
-        m_timerText.text = m_localPlayer.GetComponent<InputManager_HotPotato>().m_potatoTimer.ToString("#.00");
+        
+        m_timerText.text = ((int) Mathf.Ceil(m_localPlayer.GetComponent<InputManager_HotPotato>().m_potatoTimer)).ToString();
         if (m_age > m_tutorialTime && m_tutorialText.enabled)
         {
             //m_tutorialText.enabled = false;
