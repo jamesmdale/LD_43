@@ -52,6 +52,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5892ccc5e65e144da6dcd275a801939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hubLevel: HubScene
+  miniGameScenes:
+  - BomberMan
+  - FrostRunner2
+  - JumpRope
+  - PotatoScene
 --- !u!114 &114608888863380968
 MonoBehaviour:
   m_ObjectHideFlags: 1
