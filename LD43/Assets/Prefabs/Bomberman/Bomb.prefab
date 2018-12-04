@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionTimer: 0
-  maxTimeBeforeExplosion: 10
+  maxTimeBeforeExplosion: 2
   explosionPrefabReference: {fileID: 1598010431394410, guid: b9132a248310efd4f83202d2800be9ba,
     type: 2}
 --- !u!212 &212898858826657402

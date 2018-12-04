@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-public class GameController : NetworkBehaviour
+public class GameController : MonoBehaviour
 {
 
     public static GameController g_gameController = null;
@@ -35,18 +35,42 @@ public class GameController : NetworkBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (PlayerWidgetController widget in m_widgets)
+        {
+            widget.gameObject.SetActive(false);
+        }
+
+        foreach (GameObject player in players)
+        {
+            PlayerController controller = player.GetComponent<PlayerController>();
+            if (controller.m_playerID >= 0 && controller.m_playerID < m_widgets.Length)
+            {
+                m_widgets[controller.m_playerID].SetPlayer(controller);
+                m_widgets[controller.m_playerID].gameObject.SetActive(true);
+            } 
+        }
+    }
 
     public void AddPlayer(int playerID)
     {
-        Debug.Log("Setting player in canvas...");
-        if (playerID < m_widgets.Length && playerID >= 0)
-        {
-            m_widgets[playerID].SetPlayerID(playerID);
-        } else
-        {
-            Debug.Log("No widget for player: " + playerID);
-        }
+
+        //Debug.Log("Setting player in canvas...");
+        //if (playerID < m_widgets.Length && playerID >= 0)
+        //{
+        //    GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        //    foreach (GameObject player in players)
+        //    {
+        //        PlayerController controller = player.GetComponent<PlayerController>();
+        //        if (controller.m_playerID == playerID)
+        //        {
+        //            m_widgets[playerID].SetPlayer(controller);
+        //        }
+        //    }
+        //   // m_widgets[playerID].SetPlayerID(playerID);
+        //} else
+        //{
+        //    Debug.Log("No widget for player: " + playerID);
+        //}
     }
 }
