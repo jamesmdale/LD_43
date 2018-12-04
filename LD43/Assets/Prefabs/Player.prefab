@@ -31,6 +31,7 @@ GameObject:
   - component: {fileID: 114723982819991226}
   - component: {fileID: 114752422823911152}
   - component: {fileID: 114317762657663160}
+  - component: {fileID: 114310713679344162}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -104,6 +105,34 @@ MonoBehaviour:
   m_potatoBaby: {fileID: 0}
   m_playerHasPotato: 0
   m_potatoTimer: 15
+--- !u!114 &114310713679344162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1441939083617114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85cfdb4b9cf7de40acd25fff4405c16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSprites:
+  - {fileID: 21300000, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300002, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300004, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300006, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300008, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300010, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300012, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300014, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300016, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300018, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300020, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300022, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300024, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300026, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300028, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
+  - {fileID: 21300030, guid: 38bed8b29e64719488551688fffa79ef, type: 3}
 --- !u!114 &114317762657663160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,7 +181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f2f79f5a8ae60a4288c8c304ed2a785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasDoneInputRecently: 0
+  lengthOfFrictionTimer: 1.5
+  frictionTimer: 0
   keyToPress: 0
+  isDead: 0
 --- !u!114 &114752422823911152
 MonoBehaviour:
   m_ObjectHideFlags: 1

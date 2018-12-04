@@ -13,6 +13,9 @@ public class PlayerController : NetworkBehaviour
     public int m_playerID = -1;
 
     bool postStart = true;
+    
+    [SyncVar]
+    public int spriteIndexToUse = -1;
 
     void Start ()
     {
@@ -30,7 +33,7 @@ public class PlayerController : NetworkBehaviour
 
     public override void OnStartLocalPlayer()
     {
-       GetComponent<SpriteRenderer>().material.color = Color.blue;
+       //GetComponent<SpriteRenderer>().material.color = Color.blue;
     }
 
     // Update is called once per frame
@@ -41,6 +44,7 @@ public class PlayerController : NetworkBehaviour
             if (connectionToClient != null)
             {
                 CmdSetPlayerID((int)connectionToClient.connectionId);
+                CmdSetSpriteIndex(spriteIndexToUse);
                 postStart = false;
             }
         }
@@ -66,5 +70,17 @@ public class PlayerController : NetworkBehaviour
             m_playerID = playerID;
             Debug.Log("Assigning player id " + m_playerID + " on server");
         }
+    }
+
+    [Command]
+    public void CmdSetSpriteIndex(int spriteIndex)
+    {
+        spriteIndexToUse = spriteIndex;
+    }
+    
+    // wrapper to call it
+    public void SetTheSpriteIndex(int spriteIndex)
+    {
+        //CmdSetSpriteIndex(spriteIndex);
     }
 }
