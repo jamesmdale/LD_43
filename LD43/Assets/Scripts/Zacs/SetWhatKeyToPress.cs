@@ -23,9 +23,20 @@ public class SetWhatKeyToPress : MonoBehaviour
 		}
 		else
 		{
-			KeyCode whatToPress = playerInScene.GetComponent<InputManager_Frosty2>().keyToPress;
+			InputManager_Frosty2 playerScript = playerInScene.GetComponent<InputManager_Frosty2>();
+
+
+			if (!playerScript.isDead)
+			{
+				KeyCode whatToPress = playerScript.keyToPress;
 		
-			this.GetComponent<Text>().text = "Press: " + whatToPress;
+				this.GetComponent<Text>().text = "Press: " + whatToPress;
+			}
+			else
+			{
+				this.GetComponent<Text>().text = "You Died";
+			}
+
 		}
 		
 
