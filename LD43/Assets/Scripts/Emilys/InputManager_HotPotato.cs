@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class InputManager_HotPotato : InputManager {
-    float m_minPotatoDistance = 3.0f;
+    float m_minPotatoDistance = 2.0f;
     float m_playerSpeed = 5.0f;
     public GameObject m_potatoPrefab;
+    public GameObject m_explosionPrefab;
 
     public GameObject m_potatoBaby = null;
 
@@ -15,19 +16,30 @@ public class InputManager_HotPotato : InputManager {
     [SyncVar(hook = "OnTimerChange")]
     public float m_potatoTimer = 8.0f;
 
-    float m_potatoStartTime = 8.0f; 
+    float m_potatoStartTime = 8.0f;
 
+    //[SyncVar(hook ="OnExplodey")]
+    bool m_gotExploded = false;
+    Color m_defaultColor;
 
     // Use this for initialization
     void Start()
     {
         m_potatoTimer = m_potatoStartTime;
+        m_defaultColor = gameObject.GetComponent<SpriteRenderer>().material.color;
+    }
+
+    public void Reset()
+    {
+        m_potatoTimer = m_potatoStartTime;
+        gameObject.GetComponent<SpriteRenderer>().material.color = m_defaultColor;
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        
         //potato visualization
         if (m_playerHasPotato)
         {
@@ -47,6 +59,13 @@ public class InputManager_HotPotato : InputManager {
             }
         }
 
+        if (m_gotExploded)
+        {
+            OnExplodey(true);
+            m_gotExploded = false;
+        }
+
+        UpdatePotatoTimer(Time.deltaTime);
 
         if (!isLocalPlayer)
             return;
@@ -60,7 +79,7 @@ public class InputManager_HotPotato : InputManager {
 
 
 
-        UpdatePotatoTimer(Time.deltaTime);
+        
 
         if (Input.GetKeyDown("space"))
         {
@@ -125,12 +144,26 @@ public class InputManager_HotPotato : InputManager {
 
     void UpdatePotatoTimer(float ds)
     {
-        m_potatoTimer -= ds;
-        if (m_potatoTimer <= 0.0f)
+        if (m_potatoTimer > 0.0f)
         {
-            Debug.Log("Kaboom");
-            m_potatoTimer = 15.0f;
+            m_potatoTimer -= ds;
+        } else if (m_potatoTimer <= 0.0f)
+        {
+            if (!m_gotExploded)
+            {
+                //Debug.Log("Kaboom");
+                //m_potatoTimer = m_potatoStartTime;
+                //if (isServer)
+                //{
+                if (m_playerHasPotato)
+                {
+                    m_gotExploded = true;
+                    
+                }
+            }
+            //}
         }
+
 
         if (!isServer)
             return;
@@ -154,6 +187,18 @@ public class InputManager_HotPotato : InputManager {
         m_potatoTimer = timer;
     }
 
+    void OnExplodey(bool val)
+    {
+        Debug.Log("I just exploded; " + val);
+        m_gotExploded = val;
+        GameObject.Instantiate(m_explosionPrefab, m_potatoBaby.transform.position, m_potatoBaby.transform.rotation) ;
+        Destroy(m_potatoBaby);
+        gameObject.GetComponent<SpriteRenderer>().material.color = Color.Lerp(gameObject.GetComponent<SpriteRenderer>().material.color, Color.gray, .5f);
+        m_playerHasPotato = false;
+        //m_gotExploded = false;
+        
+
+    }
 
 
     public override void ProcessHorizontalAxis(float axis)

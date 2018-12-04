@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_potatoPrefab: {fileID: 1072695770626660, guid: 5df7d4a4672e0c94c8de43ee27c3c840,
     type: 2}
+  m_explosionPrefab: {fileID: 1243810421284084, guid: 42195052a8e9f4844a8eca69db69b575,
+    type: 2}
   m_potatoBaby: {fileID: 0}
   m_playerHasPotato: 0
   m_potatoTimer: 15
