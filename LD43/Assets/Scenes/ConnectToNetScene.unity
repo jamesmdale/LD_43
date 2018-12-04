@@ -622,6 +622,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8637ae47e4e29e478352106f1958104, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1835627449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1159918300725308, guid: 95377a88e9f16974fb1d669598151988,
+    type: 2}
+  m_PrefabInternal: {fileID: 1122802928}
 --- !u!1 &1837280480
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,7 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82ce872c8a3f0f4c9b11cd46a65e8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theNetworkManager: {fileID: 0}
+  theNetworkManager: {fileID: 1835627449}
   nameInputField: {fileID: 698245813}
   nameInputUI: {fileID: 1839094348}
   storePlayerScript: {fileID: 0}
