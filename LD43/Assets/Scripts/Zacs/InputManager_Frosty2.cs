@@ -9,14 +9,28 @@ public class InputManager_Frosty2 : NetworkBehaviour
 {
 
 	float speed = 25.0f;
+	float height = 2.5f;
+	float offset = 0.0f;
+	public bool hasDoneInputRecently = false;
+
+	public float lengthOfFrictionTimer = 1.5f;
+	public float frictionTimer;
 
 	public KeyCode keyToPress;
+
+	public bool isDead = false;
+	//public GameObject wallToFollow;
 
 
 	// Use this for initialization
 	void Start()
 	{
 		keyToPress = GenerateRandomKeyCode();
+
+		frictionTimer = lengthOfFrictionTimer;
+
+		offset = Random.Range(0.0f, 1.0f);
+		height = Random.Range(1.5f, 3.5f);
 	}
 
 	// Update is called once per frame
@@ -24,23 +38,65 @@ public class InputManager_Frosty2 : NetworkBehaviour
 	{
 		if (!isLocalPlayer)
 			return;
-		
-		CheckForMissClick();
 
-		if (Input.GetKeyDown(keyToPress))
+		
+		Vector3 pos = this.gameObject.transform.position;
+
+		if (!isDead)
 		{
-			DoMovement();
-			ChangeKeyCode();
+			CheckForMissClick();
+
+			if (Input.GetKeyDown(keyToPress))
+			{
+				DoMovement();
+				ChangeKeyCode();
+			}
+		
+			float y = Mathf.Cos(pos.x + offset) * height;
+			this.gameObject.transform.position = new Vector3(pos.x, y, pos.z);
+
+
+			ApplyFriction();
+			MakeSureWeAreNotGoingBackwards();
 		}
 
-		Vector3 pos = this.gameObject.transform.position;
 		Camera.main.transform.position = new Vector3(pos.x, 0.0f, -10.0f);
+	}
+
+	void ApplyFriction()
+	{
+		if (frictionTimer <= 0.0f)
+		{
+			if (hasDoneInputRecently == true)
+			{
+				hasDoneInputRecently = false;
+			}
+			else
+			{
+				this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * (speed * .5f));
+				frictionTimer = lengthOfFrictionTimer;
+			}
+		}
+		else
+		{
+			frictionTimer -= Time.deltaTime;
+		}
+	}
+
+	void MakeSureWeAreNotGoingBackwards()
+	{
+		if (this.gameObject.GetComponent<Rigidbody2D>().velocity.x <= 0.0f)
+		{
+			this.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+		}
 	}
 
 	void DoMovement()
 	{
 		this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * speed);
-		
+
+		hasDoneInputRecently = true;
+
 		// maybe do some sweet sin up and down motion here
 	}
 	
@@ -59,7 +115,7 @@ public class InputManager_Frosty2 : NetworkBehaviour
 				//this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * speed * .5f);
 				//this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
 				this.gameObject.GetComponent<Rigidbody2D>().velocity = 
-					this.gameObject.GetComponent<Rigidbody2D>().velocity * .3f;
+					this.gameObject.GetComponent<Rigidbody2D>().velocity * .6f;
 			}
 		}
 	}
@@ -105,4 +161,18 @@ public class InputManager_Frosty2 : NetworkBehaviour
 		return value;
 	}
 
+	private void OnCollisionEnter2D(Collision2D other)
+	{		
+		if (other.gameObject.name == "Spikes")
+		{
+			PlayerDied();
+		}
+	}
+
+	void PlayerDied()
+	{
+		isDead = true;
+		this.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+		this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+	}
 }
