@@ -23,10 +23,7 @@ public class InputManager_Bomberman : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isLocalPlayer)
-            return;
-
-        if (isPlayerElminated)
+        if (!isLocalPlayer || isPlayerElminated)
             return;
 
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * playerSpeed;
