@@ -30,10 +30,10 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        GoToLevelCheck();
+
 	}
 
-    public void ChangeSceneName(string newSceneName)
+    public void ChangeScene(string newSceneName)
     {
         currentSceneName = newSceneName;
         NetworkManager.singleton.ServerChangeScene(currentSceneName);
@@ -42,34 +42,5 @@ public class SceneController : MonoBehaviour
     public string GetCurrentSceneName()
     {
         return currentSceneName;
-    }
-
-    void GoToLevelCheck()
-    {
-
-        if (Input.GetKeyDown(KeyCode.Keypad4))
-        {
-            ChangeSceneName("FrostRunner2");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            ChangeSceneName("BomberMan");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            ChangeSceneName("JumpRope");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            ChangeSceneName("PotatoScene");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            ChangeSceneName("HubScene");
-        }
     }
 }
