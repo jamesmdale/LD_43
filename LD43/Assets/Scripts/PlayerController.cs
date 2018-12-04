@@ -17,6 +17,8 @@ public class PlayerController : NetworkBehaviour
     [SyncVar]
     public int spriteIndexToUse = -1;
 
+    public GameObject m_arrow;
+
     void Start ()
     {
         if (!isLocalPlayer)
@@ -33,7 +35,8 @@ public class PlayerController : NetworkBehaviour
 
     public override void OnStartLocalPlayer()
     {
-       //GetComponent<SpriteRenderer>().material.color = Color.blue;
+        //GetComponent<SpriteRenderer>().material.color = Color.blue;
+        m_arrow.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     // Update is called once per frame
