@@ -562,6 +562,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114713397299845412, guid: 95377a88e9f16974fb1d669598151988,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4941273247033762, guid: 95377a88e9f16974fb1d669598151988, type: 2}
       propertyPath: m_LocalPosition.x
       value: -1.1112875
@@ -593,6 +598,11 @@ Prefab:
     - target: {fileID: 4941273247033762, guid: 95377a88e9f16974fb1d669598151988, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114713397299845412, guid: 95377a88e9f16974fb1d669598151988,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.data[6]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95377a88e9f16974fb1d669598151988, type: 2}
@@ -980,7 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82ce872c8a3f0f4c9b11cd46a65e8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theNetworkManager: {fileID: 0}
+  theNetworkManager: {fileID: 1012255099}
   nameInputField: {fileID: 698245813}
   nameInputUI: {fileID: 1839094348}
   storePlayerScript: {fileID: 0}

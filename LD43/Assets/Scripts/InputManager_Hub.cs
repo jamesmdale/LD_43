@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class InputManager_Hub : InputManager {
+public class InputManager_Hub : NetworkBehaviour {
     float m_playerSpeed = 5.0f;
+    GameObject gameStateManagerPrefabReference;
 
 	// Use this for initialization
 	void Start ()
     {
-		
-	}
+   
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -24,35 +26,5 @@ public class InputManager_Hub : InputManager {
         
         Vector3 pos = this.gameObject.transform.position;
         Camera.main.transform.position = new Vector3(pos.x, pos.y, -10.0f);
-    }
-    
-    public override void ProcessHorizontalAxis(float axis)
-    {
-        transform.Translate(axis, 0, 0);
-    }
-
-    public override void ProcessVerticalAxis(float axis)
-    {
-        transform.Translate(0, axis, 0);
-    }
-
-    public override void ProcessShift(bool isDown)
-    {
-        string downUp = isDown ? "DOWN" : "UP";
-        if( isDown )
-            Debug.LogFormat("Shift Button = " + downUp );
-    }
-
-    public override void ProcessSpace(bool isDown)
-    {
-        string downUp = isDown ? "DOWN" : "UP";
-        if (isDown)
-        {
-            Debug.LogFormat("Space Button = " + downUp);
-
-            SceneController sceneController = GameObject.Find("SceneManager").GetComponent<SceneController>();
-            sceneController.ChangeSceneName( "HotPotato" );
-        }
-
     }
 }
