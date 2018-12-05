@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 
 public class PlayerController : NetworkBehaviour
@@ -23,9 +24,11 @@ public class PlayerController : NetworkBehaviour
     {
         if (!isLocalPlayer)
             return;
+        
         postStart = true;
         //CmdSetPlayerID(NetworkManager.singleton.GetComponent<SacrificialNetworkManager>().m_localConnectionID);
         CmdUpdateDisplayName(displayName = NetworkManager.singleton.GetComponent<StorePlayerName>().playerName);
+
     }
 
     private void OnDisable()
@@ -49,10 +52,15 @@ public class PlayerController : NetworkBehaviour
                 CmdSetPlayerID((int)connectionToClient.connectionId);
                 CmdSetSpriteIndex(spriteIndexToUse);
                 postStart = false;
+                
+                //PlayerNameUIText.GetComponent<Text>().text = displayName;
             }
         }
         if (!isLocalPlayer)
             return;
+        
+        //PlayerNameUIText.GetComponent<Text>().text = displayName;
+        
     }
 
     [Command]

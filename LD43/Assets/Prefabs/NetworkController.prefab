@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114713397299845412}
   - component: {fileID: 114513142486350990}
   - component: {fileID: 114801284614316558}
+  - component: {fileID: 114546829586917626}
   m_Layer: 0
   m_Name: NetworkController
   m_TagString: Untagged
@@ -57,6 +58,18 @@ MonoBehaviour:
   showGUI: 1
   offsetX: 220
   offsetY: 220
+--- !u!114 &114546829586917626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159918300725308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c6d1f8adc35e3478991082d27dc349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentSceneName: HubScene
 --- !u!114 &114713397299845412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,6 +103,7 @@ MonoBehaviour:
   - {fileID: 1466365982155728, guid: d74ac085a40adc949a6eba3515602048, type: 2}
   - {fileID: 1492238143397652, guid: b18e67449c972b942a95488da332e448, type: 2}
   - {fileID: 1598010431394410, guid: b9132a248310efd4f83202d2800be9ba, type: 2}
+  - {fileID: 1506982363439602, guid: 8110ac4eb66f2ba48b18b757719b7e5e, type: 2}
   m_CustomConfig: 1
   m_MaxConnections: 16
   m_ConnectionConfig:
@@ -145,6 +159,8 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
+  m_localConnectionID: 0
+  playerSpriteList: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000
 --- !u!114 &114801284614316558
 MonoBehaviour:
   m_ObjectHideFlags: 1
