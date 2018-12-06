@@ -7,7 +7,7 @@ public class ExplosionScript : NetworkBehaviour {
 
     [SyncVar]
     float explosionTimer = 0.0f;
-    float maxLifeTime = 0.1f;
+    float maxLifeTime = 0.5f;
 
     float explosionRadius = 0.0f;
 
