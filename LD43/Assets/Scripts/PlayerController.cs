@@ -14,6 +14,9 @@ public class PlayerController : NetworkBehaviour
     public int m_playerID = -1;
 
     bool postStart = true;
+
+    [SyncVar] 
+    public bool isFinished = false;
     
     [SyncVar]
     public int spriteIndexToUse = -1;
@@ -28,7 +31,7 @@ public class PlayerController : NetworkBehaviour
         postStart = true;
         //CmdSetPlayerID(NetworkManager.singleton.GetComponent<SacrificialNetworkManager>().m_localConnectionID);
         CmdUpdateDisplayName(displayName = NetworkManager.singleton.GetComponent<StorePlayerName>().playerName);
-
+        CmdSetFinished(false);
     }
 
     private void OnDisable()
@@ -45,6 +48,19 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(displayName + " : " + isFinished);
+
+        // if you wanna test
+        if (Input.GetKeyDown(KeyCode.Keypad9))
+        {
+            SetPlayerAsFinished();
+        }
+
+        if (isFinished)
+        {
+            GetComponent<SpriteRenderer>().material.color = Color.black;
+        }
+        
         if (postStart)
         {
             if (connectionToClient != null)
@@ -60,13 +76,28 @@ public class PlayerController : NetworkBehaviour
             return;
         
         //PlayerNameUIText.GetComponent<Text>().text = displayName;
-        
     }
 
+    // This is how we can set the player as done in our mini games
+    public void SetPlayerAsFinished()
+    {
+        if(!isLocalPlayer)
+            return;
+
+        CmdSetFinished(true);
+    }
+    
+    // COMMANDS
     [Command]
     void CmdUpdateDisplayName(string playerName)
     {
         displayName = playerName;
+    }
+    
+    [Command]
+    void CmdSetFinished(bool finished)
+    {
+        isFinished = finished;
     }
 
     [Command]
@@ -89,9 +120,5 @@ public class PlayerController : NetworkBehaviour
         spriteIndexToUse = spriteIndex;
     }
     
-    // wrapper to call it
-    public void SetTheSpriteIndex(int spriteIndex)
-    {
-        //CmdSetSpriteIndex(spriteIndex);
-    }
+    
 }

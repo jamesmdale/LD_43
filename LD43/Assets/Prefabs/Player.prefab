@@ -417,7 +417,7 @@ MonoBehaviour:
   chancesLeft: 4
   ignoreCollision: 0
   hitDuration: 1
-  jumpDuration: 1
+  jumpDuration: 0.5
   maxScale: 7
 --- !u!212 &212036744461143098
 SpriteRenderer:

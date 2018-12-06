@@ -169,10 +169,20 @@ public class InputManager_Frosty2 : NetworkBehaviour
 		}
 	}
 
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.gameObject.name == "FinishLine")
+		{
+			this.gameObject.GetComponent<PlayerController>().SetPlayerAsFinished();	
+		}
+	}
+
 	void PlayerDied()
 	{
 		isDead = true;
 		this.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-		this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+		//this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+		
+		this.gameObject.GetComponent<PlayerController>().SetPlayerAsFinished();
 	}
 }
