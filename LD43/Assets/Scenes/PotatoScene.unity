@@ -335,7 +335,7 @@ Prefab:
     - target: {fileID: 224825040153430716, guid: 2d779a992f56d6d43acb294ebacb56e4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 122
+      value: -127
       objectReference: {fileID: 0}
     - target: {fileID: 224825040153430716, guid: 2d779a992f56d6d43acb294ebacb56e4,
         type: 2}
@@ -375,12 +375,12 @@ Prefab:
     - target: {fileID: 224825040153430716, guid: 2d779a992f56d6d43acb294ebacb56e4,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224825040153430716, guid: 2d779a992f56d6d43acb294ebacb56e4,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 114852963937291866, guid: 2d779a992f56d6d43acb294ebacb56e4,
         type: 2}
@@ -390,7 +390,7 @@ Prefab:
     - target: {fileID: 224160901388509928, guid: 2d779a992f56d6d43acb294ebacb56e4,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -313.2
+      value: 60.799988
       objectReference: {fileID: 0}
     - target: {fileID: 224160901388509928, guid: 2d779a992f56d6d43acb294ebacb56e4,
         type: 2}
@@ -400,7 +400,7 @@ Prefab:
     - target: {fileID: 224160901388509928, guid: 2d779a992f56d6d43acb294ebacb56e4,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 95.86
+      value: 95.859985
       objectReference: {fileID: 0}
     - target: {fileID: 224160901388509928, guid: 2d779a992f56d6d43acb294ebacb56e4,
         type: 2}
@@ -411,6 +411,16 @@ Prefab:
         type: 2}
       propertyPath: m_FontData.m_Alignment
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224160901388509928, guid: 2d779a992f56d6d43acb294ebacb56e4,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224160901388509928, guid: 2d779a992f56d6d43acb294ebacb56e4,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d779a992f56d6d43acb294ebacb56e4, type: 2}
@@ -3790,9 +3800,9 @@ RectTransform:
   m_Father: {fileID: 538779285}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -313.4, y: 198.4}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 60.600006, y: -50.600006}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1535882416
