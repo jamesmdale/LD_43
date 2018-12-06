@@ -61,7 +61,7 @@ public class InputManager_JumpRope : NetworkBehaviour
         else
         {
             if (isLocalPlayer)
-                GetComponent<SpriteRenderer>().material.color = Color.blue;          // No hits!
+                GetComponent<SpriteRenderer>().material.color = Color.white;          // No hits!
             else
                 GetComponent<SpriteRenderer>().material.color = Color.white;         // No hits!
         }
@@ -72,7 +72,11 @@ public class InputManager_JumpRope : NetworkBehaviour
 
         // Only players still playing can update!
         if (playerIsOutOfMatch)
+        {
+            this.gameObject.GetComponent<PlayerController>().SetPlayerAsFinished();
             return;
+        }
+            
 
         CmdDecreamentTimeRemainingHit( Time.deltaTime );
 
@@ -158,8 +162,12 @@ public class InputManager_JumpRope : NetworkBehaviour
         chancesLeft -= 1;
 
         // Is this player out of match?
-        if( chancesLeft <= 0 )
+        if (chancesLeft <= 0)
+        {
             playerIsOutOfMatch = true;
+            
+            //this.gameObject.GetComponent<PlayerController>().SetPlayerAsFinished();
+        }
     }
 
     [Command]

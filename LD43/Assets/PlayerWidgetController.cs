@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerWidgetController : MonoBehaviour {
     public PlayerController m_player;
-    string m_name;
+    //string m_name;
     int m_playerID = -1;
     Text m_text;
 
 	// Use this for initialization
 	void Start () {
         m_text = gameObject.GetComponent<Text>();
-        m_name = "PlayerName";
+        //m_name = "PlayerName";
         SetText();
         SetVisibility();
 	}
@@ -33,7 +33,7 @@ public class PlayerWidgetController : MonoBehaviour {
     {
         m_player = player;
         m_playerID = m_player.m_playerID;
-        m_name = m_player.displayName;
+        //m_name = m_player.displayName;
         SetText();
     }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
@@ -23,6 +24,9 @@ public class SacrificialNetworkManager : NetworkManager
     //public List<LevelNameAndInputManager> scenes = new List<LevelNameAndInputManager>();
     //public string currentSceneName = "HubScene";
     //public static SceneController sceneControllerInstance;
+
+
+    public int[] playerSpriteList = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
     // Server callbacks
     public override void OnServerConnect(NetworkConnection conn)
@@ -62,12 +66,19 @@ public class SacrificialNetworkManager : NetworkManager
         GameObject player = (GameObject)GameObject.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
         //player.GetComponent<PlayerController>().CmdSetPlayerID(conn.connectionId);
         
-
+        player.GetComponent<PlayerController>().spriteIndexToUse = GetSpriteFromHost(conn.connectionId);
+        //player.GetComponent<PlayerController>().SetTheSpriteIndex(GetSpriteFromHost());
+        
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
 
         Debug.Log("Client has requested to get his player added to the game pcontrollerid= " + playerControllerId + "connID= " + conn.connectionId);
         GameController.g_gameController.AddPlayer(conn.connectionId);
 
+    }
+
+    int GetSpriteFromHost(int connIndex)
+    {
+        return playerSpriteList[connIndex];
     }
 
     public override void OnServerRemovePlayer(NetworkConnection conn, UnityEngine.Networking.PlayerController player)
@@ -90,8 +101,23 @@ public class SacrificialNetworkManager : NetworkManager
     public override void OnStartHost()
     {
         base.OnStartHost();
+
+        ShuffleList();
         //Debug.Log("Host has started");
 
+    }
+
+    void ShuffleList()
+    {
+        for (int i = 0; i < Random.Range(0, 100); i++)
+        {
+            int firstIndex = Random.Range(0, 16);
+            int secondindex = Random.Range(0, 16);
+
+            int temp = playerSpriteList[secondindex];
+            playerSpriteList[secondindex] = playerSpriteList[firstIndex];
+            playerSpriteList[firstIndex] = temp;
+        }
     }
 
     public override void OnStartServer()
