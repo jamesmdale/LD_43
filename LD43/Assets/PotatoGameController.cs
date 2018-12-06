@@ -16,7 +16,7 @@ public class PotatoGameController : NetworkBehaviour {
     GameObject m_chosenPlayer;
     float m_age = 0.0f;
     float m_explodeTime = -1.0f;
-    float m_respawnLength = 1.0f;
+    float m_respawnLength = 2.0f;
 
 	// Use this for initialization
 	void Start () {

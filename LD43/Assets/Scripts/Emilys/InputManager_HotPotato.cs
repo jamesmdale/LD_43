@@ -197,7 +197,16 @@ public class InputManager_HotPotato : InputManager {
         m_playerHasPotato = false;
         //m_gotExploded = false;
         
+        
+        // this is how you mark them as done and when everyone is done the game ends
+        //this.gameObject.GetComponent<PlayerController>().TellHostToEndMiniGame();
+        StartCoroutine(EndTheGame());
+    }
 
+    IEnumerator EndTheGame()
+    {
+        yield return new WaitForSeconds(1.5f);
+        this.gameObject.GetComponent<PlayerController>().TellHostToEndMiniGame();
     }
 
 

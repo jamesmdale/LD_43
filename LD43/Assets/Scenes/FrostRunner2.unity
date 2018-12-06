@@ -395,6 +395,11 @@ Prefab:
       propertyPath: miniGameLength
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 114713781441064108, guid: 3889d0a9e1c1b114a915b4c3f2fb3921,
+        type: 2}
+      propertyPath: checkForOnePersonVictory
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3889d0a9e1c1b114a915b4c3f2fb3921, type: 2}
   m_IsPrefabAsset: 0

@@ -86,6 +86,14 @@ public class PlayerController : NetworkBehaviour
 
         CmdSetFinished(true);
     }
+
+    public void TellHostToEndMiniGame()
+    {
+        if(!isServer)
+            return;
+        
+        GameObject.Find("EndMiniGameManager").GetComponent<EndMiniGameManager>().CmdTellHostToEndMiniGame();
+    }
     
     // COMMANDS
     [Command]

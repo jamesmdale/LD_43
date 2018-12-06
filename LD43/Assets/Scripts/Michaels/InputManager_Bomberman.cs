@@ -23,6 +23,10 @@ public class InputManager_Bomberman : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        if(isPlayerElminated)
+            this.gameObject.GetComponent<PlayerController>().SetPlayerAsFinished();
+        
         if (!isLocalPlayer || isPlayerElminated)
             return;
 
