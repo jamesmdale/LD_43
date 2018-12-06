@@ -8,6 +8,7 @@ public class InputManager_HotPotato : InputManager {
     float m_playerSpeed = 5.0f;
     public GameObject m_potatoPrefab;
     public GameObject m_explosionPrefab;
+    bool m_canMove = true;
 
     public GameObject m_potatoBaby = null;
 
@@ -70,11 +71,14 @@ public class InputManager_HotPotato : InputManager {
         if (!isLocalPlayer)
             return;
 
-        //input logic
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * m_playerSpeed;
-        float y = Input.GetAxis("Vertical") * Time.deltaTime * m_playerSpeed;
+        if (m_canMove)
+        {
+            //input logic
+            float x = Input.GetAxis("Horizontal") * Time.deltaTime * m_playerSpeed;
+            float y = Input.GetAxis("Vertical") * Time.deltaTime * m_playerSpeed;
 
-        gameObject.transform.Translate(x, y, 0.0f);
+            gameObject.transform.Translate(x, y, 0.0f);
+        }
 
 
 
@@ -193,7 +197,8 @@ public class InputManager_HotPotato : InputManager {
         m_gotExploded = val;
         GameObject.Instantiate(m_explosionPrefab, m_potatoBaby.transform.position, m_potatoBaby.transform.rotation) ;
         Destroy(m_potatoBaby);
-        gameObject.GetComponent<SpriteRenderer>().material.color = Color.Lerp(gameObject.GetComponent<SpriteRenderer>().material.color, Color.gray, .5f);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        m_canMove = false;
         m_playerHasPotato = false;
         //m_gotExploded = false;
         
